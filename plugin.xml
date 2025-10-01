@@ -1,0 +1,45 @@
+<?xml version='1.0' encoding='utf-8'?>
+<plugin id="@regulaforensics/idv" version="3.2.23-beta" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+  <name>IDV</name>
+  <description>Cordova plugin for Regula IDV</description>
+  <license>commercial</license>
+  <keywords>cordova,face,reader,scanner,regula,platform,idv</keywords>
+
+  <js-module name="IDVPlugin" src="www/cordova.js">
+    <clobbers target="IDVPlugin" />
+  </js-module>
+
+  <platform name="ios">
+    <config-file target="config.xml" parent="/widget">
+      <feature name="IDV">
+        <param name="ios-package" value="CVDIDV" />
+      </feature>
+      <preference name="deployment-target" value="14.0" />
+    </config-file>
+    <header-file src="ios/CVDIDV.swift" />
+    <source-file src="ios/Main.swift" />
+    <header-file src="ios/JSONConstructor.swift" />
+    <header-file src="ios/Utils.swift" />
+    <podspec>
+      <config>
+        <source url="https://github.com/CocoaPods/Specs.git" />
+      </config>
+      <pods>
+        <pod name="IDVSDK" spec="3.1.1492" />
+      </pods>
+    </podspec>
+  </platform>
+
+  <platform name="android">
+    <config-file parent="/*" target="res/xml/config.xml">
+      <feature name="IDV">
+        <param name="android-package" value="com.regula.plugin.idv.CVDIDV" />
+      </feature>
+    </config-file>
+    <framework src="android/cordova.gradle" custom="true" type="gradleReference" />
+    <source-file src="android/CVDIDV.kt" target-dir="java/com.regula.plugin.idv" />
+    <source-file src="android/src/main/java/com/regula/plugin/idv/Main.kt" target-dir="java/com.regula.plugin.idv" />
+    <source-file src="android/src/main/java/com/regula/plugin/idv/JSONConstructor.kt" target-dir="java/com.regula.plugin.idv" />
+    <source-file src="android/src/main/java/com/regula/plugin/idv/Utils.kt" target-dir="java/com.regula.plugin.idv" />
+  </platform>
+</plugin>

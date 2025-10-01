@@ -1,0 +1,41 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    // Conditional for compatibility with AGP <4.2.
+    if (project.android.hasProperty("namespace")) {
+        namespace 'com.regula.plugin.idv'
+    }
+
+    compileSdk 36
+
+    defaultConfig {
+        minSdkVersion 24
+        targetSdk 36
+        versionCode 1
+        versionName "1.0"
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        maven {
+            url "https://maven.regulaforensics.com/RegulaDocumentReader"
+        }
+    }
+}
+
+dependencies {
+    //noinspection GradleDynamicVersion
+    implementation 'com.facebook.react:react-native:+'
+    //noinspection GradleDependency
+    implementation('com.regula.idv:api:3.1.90') {
+        transitive = true
+    }
+}
+  

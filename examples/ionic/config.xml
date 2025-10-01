@@ -1,0 +1,59 @@
+<?xml version='1.0' encoding='utf-8'?>
+<widget android-packageName="com.regula.example.idv.ionic" ios-CFBundleIdentifier="com.regula.example.idv.ionic" version="1.0.0"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+    <name>IDV</name>
+    <icon src="images/icon.png" />
+    <platform name="android">
+        <resource-file src="assets/regula.license" target="app/src/main/assets/Regula/regula.license" />
+        <resource-file src="assets/db.dat" target="app/src/main/assets/Regula/db.dat" />
+        <preference name="orientation" value="portrait" />
+        <preference name="AndroidEdgeToEdge" value="true" />
+        <preference name="android-minSdkVersion" value="24" />
+        <preference name="android-targetSdkVersion" value="36" />
+        <preference name="GradlePluginKotlinEnabled" value="true" />
+        <config-file parent="/*" target="AndroidManifest.xml">
+            <uses-permission android:name="android.permission.NFC" />
+        </config-file>
+        <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
+            <application android:usesCleartextTraffic="true" />
+        </edit-config>
+    </platform>
+    <platform name="ios">
+        <resource-file src="assets/regula.license" />
+        <resource-file src="assets/db.dat" />
+        <preference name="deployment-target" value="14.0" />
+        <preference name="orientation" value="portrait" />
+        <allow-intent href="itms:*" />
+        <allow-intent href="itms-apps:*" />
+        <config-file parent="NSCameraUsageDescription" target="*-Info.plist">
+            <string>To use camera</string>
+        </config-file>
+        <config-file parent="NSPhotoLibraryUsageDescription" target="*-Info.plist">
+            <string>To pick images</string>
+        </config-file>
+        <config-file parent="NFCReaderUsageDescription" target="*-Info.plist">
+            <string>To use NFC</string>
+        </config-file>
+        <config-file parent="com.apple.developer.nfc.readersession.iso7816.select-identifiers" target="*-Info.plist">
+            <array>
+                <string>A0000002471001</string>
+                <string>E80704007F00070302</string>
+                <string>A000000167455349474E</string>
+                <string>A0000002480100</string>
+                <string>A0000002480200</string>
+                <string>A0000002480300</string>
+                <string>A00000045645444C2D3031</string>
+            </array>
+        </config-file>
+        <config-file parent="com.apple.developer.nfc.readersession.formats" target="*-Debug.plist">
+            <array>
+                <string>TAG</string>
+            </array>
+        </config-file>
+        <config-file parent="com.apple.developer.nfc.readersession.formats" target="*-Release.plist">
+            <array>
+                <string>TAG</string>
+            </array>
+        </config-file>
+    </platform>
+</widget>

@@ -1,0 +1,38 @@
+<div class="column" style="height: 100%">
+    <div class="column header">
+        <span id="status">Loading...</span>
+        <div class="column divider"></div>
+    </div>
+    <div id="main" class="column no-scroll">
+        <div class="row">
+            <div class="column" style="padding: 5px;">
+                <p>Portrait</p>
+                <img id="portrait-image" src="images/portrait.png" height="160px" width="120px">
+            </div>
+            <div class="column" style="padding: 5px;">
+                <p>Document image</p>
+                <img id="document-image" src="images/document.png" height="160px" width="200px">
+            </div>
+        </div>
+        <div id="scenario-container" class="column no-scroll" style="margin-top: 15px; background-color: rgba(0, 0, 0, 0.03);">
+            <div id="scenarios" class="scroll"></div>
+        </div>
+        <div class="row" style="width: 360px; padding-top: 15px;">
+            <span id="rfid-checkbox-description" style="font-size: 18px;width: 100%;">Process rfid reading(unavailable)</span>
+            <input id="rfid-checkbox" type="checkbox" style="margin-left: auto;" disabled />
+        </div>
+        <div class="row">
+            <button id="scan" class="button">Scan document</button>
+            <button id="recognize" class="button">Scan image</button>
+        </div>
+        <button id="connect" class="button" style="width: 360px; display: none;">Connect</button>
+        <div style="padding-top: 20px;"></div>
+    </div>
+    <div id="custom-rfid" class="column no-scroll" style="display: none;">
+        <span id="rfid-description" style="font-size: 22px">Place your phone on top of the NFC tag</span>
+        <div class="progress-bar">
+            <div id="progress"></div>
+        </div>
+        <button id="cancel-rfid" class="text-button" style="margin-top: 50px; padding-bottom: 100px;">X</button>
+    </div>
+</div>

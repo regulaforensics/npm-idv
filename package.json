@@ -1,0 +1,38 @@
+{
+  "name": "@regulaforensics/idv",
+  "version": "3.2.23-beta",
+  "description": "This is an npm module for Regula IDV, which unifies access to all Regula products. This plugin makes possible to use it with react-native, cordova and capacitor applications. Supports Android and iOS.",
+  "main": "www/react-native/index.js",
+  "module": "www/capacitor/index.js",
+  "types": "www/types/index.d.ts",
+  "cordova": {
+    "id": "@regulaforensics/idv",
+    "platforms": [
+      "ios",
+      "android"
+    ]
+  },
+  "keywords": [
+    "react",
+    "react-native",
+    "ionic",
+    "capacitor",
+    "cordova",
+    "face",
+    "reader",
+    "scanner",
+    "regula",
+    "platform",
+    "idv"
+  ],
+  "author": "RegulaForensics",
+  "license": "commercial",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/regulaforensics/npm-idv.git"
+  },
+  "homepage": "https://mobile.regulaforensics.com",
+  "publishConfig": {
+    "access": "public"
+  }
+}
