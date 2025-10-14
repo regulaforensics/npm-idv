@@ -1,3 +1,4 @@
+apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-kapt'
 
 android {
@@ -13,7 +14,6 @@ repositories {
 }
 
 dependencies {
-    //noinspection GradleDependency
     implementation('com.regula.idv:api:3.1.90') {
         transitive = true
     }

@@ -7,13 +7,24 @@ export async function exec(name, params) {
     return RNIDV.exec(name, params)
 }
 
-function _setEvent(id, completion, fromJson) {
+function setEvent(id, completion, transform) {
     eventManager.removeAllListeners(id)
-    if (completion == null) return
-    if (fromJson == null) eventManager.addListener(id, completion)
-    else eventManager.addListener(id, data => {
-        data = fromJson(data)
-        if (data !== null && typeof data[Symbol.iterator] === 'function') completion(...data)
-        else completion(data)
-    })
+    if (transform === undefined) transform = func => func
+    if (completion !== undefined) eventManager.addListener(id, transform(completion))
+}
+
+export function setDidStartSessionCompletion(completion) {
+    setEvent('didStartSessionEvent', completion)
+}
+
+export function setDidEndSessionCompletion(completion) {
+    setEvent('didEndSessionEvent', completion)
+}
+
+export function setDidStartRestoreSessionCompletion(completion) {
+    setEvent('didStartRestoreSessionEvent', completion)
+}
+
+export function setDidContinueRemoteSessionCompletion(completion) {
+    setEvent('didContinueRemoteSessionEvent', completion)
 }

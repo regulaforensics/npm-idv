@@ -11,6 +11,7 @@
         <preference name="android-minSdkVersion" value="24" />
         <preference name="android-targetSdkVersion" value="36" />
         <preference name="GradlePluginKotlinEnabled" value="true" />
+        <preference name="GradlePluginKotlinVersion" value="2.1.20" />
         <config-file parent="/*" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.NFC" />
         </config-file>

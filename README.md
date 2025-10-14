@@ -3,16 +3,10 @@ IDV is a framework that unifies access to all Regula products. This plugin makes
 
 ## Android Integration
 
+This step is only needed for ***React Native***
 
-TODO check this
-
-
-In order to use this plugin, in `android/app/build.gradle` add `kotlin-kapt` plugin and enable `dataBinding`:
+In order to use this plugin, in `android/app/build.gradle` enable `dataBinding`:
 ```
-plugins {
-    id "kotlin-kapt"
-}
-
 android {
     buildFeatures {
         dataBinding true
