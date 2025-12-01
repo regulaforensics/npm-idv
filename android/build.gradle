@@ -1,0 +1,32 @@
+apply plugin: 'com.android.library'
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    namespace 'com.regula.plugin.idv'
+    compileSdk 36
+
+    defaultConfig {
+        minSdkVersion 24
+    }
+
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+rootProject.allprojects {
+    repositories {
+        maven {
+            url "https://maven.regulaforensics.com/RegulaDocumentReader/Nightly"
+        }
+    }
+}
+
+dependencies {
+    implementation 'com.facebook.react:react-native:+'
+    implementation('com.regula.idv:api:3.2.1') {
+        transitive = true
+    }
+}
+  

@@ -1,0 +1,20 @@
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-kapt'
+
+android {
+    buildFeatures {
+        dataBinding true
+    }
+}
+
+repositories {
+    maven {
+        url "https://maven.regulaforensics.com/RegulaDocumentReader/Nightly"
+    }
+}
+
+dependencies {
+    implementation('com.regula.idv:api:3.2.1') {
+        transitive = true
+    }
+}

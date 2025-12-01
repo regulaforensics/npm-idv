@@ -1,0 +1,7 @@
+{
+  "name": "IDV",
+  "integrations": {
+    "cordova": {}
+  },
+  "type": "angular"
+}
