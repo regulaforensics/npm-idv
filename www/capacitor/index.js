@@ -5,17 +5,13 @@ import { CredentialsConnectionConfig } from './config/credentials_connection_con
 import { ApiKeyConnectionConfig } from './config/api_key_connection_config'
 import { PrepareWorkflowConfig } from './config/prepare_workflow_config'
 import { StartWorkflowConfig } from './config/start_workflow_config'
+import { StartSessionConfig } from './config/start_session_config'
+import { SendDataConfig } from './config/send_data_config'
 import { Workflow } from './model/workflow'
 import { WorkflowResult } from './model/workflow_result'
+import { WorkflowStep } from './model/workflow_step'
 
-export { TokenConnectionConfig }
-export { CredentialsConnectionConfig }
-export { ApiKeyConnectionConfig }
-export { PrepareWorkflowConfig }
-export { StartWorkflowConfig }
-export { Workflow }
-export { WorkflowResult }
-export { WorkflowStep } from './model/workflow_step'
+export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, Workflow, WorkflowResult, WorkflowStep }
 
 export class IDV {
     static get instance() { return IDV._instance }
@@ -87,6 +83,18 @@ export class IDV {
             }
             return result
         })
+    }
+
+    async startSession(config) {
+        config = ensureInstance(config, StartSessionConfig)
+        const response = await exec('startSession', [config.toJson()])
+        return completionFromResponse(response)
+    }
+
+    async sendData(config) {
+        config = ensureInstance(config, SendDataConfig)
+        const response = await exec('sendData', [config.toJson()])
+        return completionFromResponse(response)
     }
 }
 

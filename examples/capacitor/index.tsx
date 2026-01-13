@@ -4,11 +4,11 @@ import { setupIonicReact } from '@ionic/react'
 import { StatusBar, Style } from '@capacitor/status-bar'
 import { main } from './src/main'
 
-document.addEventListener('deviceready', () => fetch("main.html")
-    .then(response => response.text())
-    .then(html => document.getElementById("content").innerHTML = html)
-    .then(_ => document.dispatchEvent(new Event('ready')))
-)
+document.addEventListener('deviceready', async () => {
+    document.getElementById("content").innerHTML = await fetch("main.html").then(r => r.text())
+    await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+    document.dispatchEvent(new Event('ready'))
+})
 
 document.addEventListener('ready', main)
 

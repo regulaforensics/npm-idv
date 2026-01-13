@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="@regulaforensics/idv" version="3.2.59-beta" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+<plugin id="@regulaforensics/idv" version="3.2.68-beta" xmlns="http://apache.org/cordova/ns/plugins/1.0">
   <name>IDV</name>
   <description>Cordova plugin for Regula IDV</description>
   <license>commercial</license>
@@ -26,7 +26,7 @@
         <source url="https://github.com/CocoaPods/Specs.git" />
       </config>
       <pods>
-        <pod name="IDVSDK" spec="3.1.1492" />
+        <pod name="IDVSDK" spec="3.2.1670" />
       </pods>
     </podspec>
   </platform>

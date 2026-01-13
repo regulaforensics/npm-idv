@@ -71,11 +71,11 @@ async function startWorkflow(): Promise<void> {
     setDescription(`SessionID: ${result?.sessionId}`)
 }
 
-function handleException(error?: string, tag?: string): boolean {
+function handleException(error?: string | null, tag?: string): boolean {
     if (error == null) return false
     setStatus(`Error - IDV.${tag}()`)
     setDescription(error)
-    console.error(error)
+    console.log(error)
     return true
 }
 

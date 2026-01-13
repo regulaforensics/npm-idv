@@ -14,7 +14,11 @@ import { main } from './src/main'
 })
 class Main {
     constructor(platform: Platform) {
-        platform.ready().then(main)
+        (async () => {
+            await platform.ready()
+            await new Promise(resolve => requestAnimationFrame(() => requestAnimationFrame(resolve)))
+            main()
+        })()
     }
 }
 

@@ -2,11 +2,11 @@
 /******/ 	"use strict";
 /******/ 	var __webpack_modules__ = ({
 
-/***/ "./src/config/api_key_connection_config.js":
+/***/ "./src/config/api_key_connection_config.js"
 /*!*************************************************!*\
   !*** ./src/config/api_key_connection_config.js ***!
   \*************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -46,13 +46,13 @@ class ApiKeyConnectionConfig {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./src/config/credentials_connection_config.js":
+/***/ "./src/config/credentials_connection_config.js"
 /*!*****************************************************!*\
   !*** ./src/config/credentials_connection_config.js ***!
   \*****************************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -92,13 +92,13 @@ class CredentialsConnectionConfig {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./src/config/prepare_workflow_config.js":
+/***/ "./src/config/prepare_workflow_config.js"
 /*!***********************************************!*\
   !*** ./src/config/prepare_workflow_config.js ***!
   \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -126,13 +126,93 @@ class PrepareWorkflowConfig {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./src/config/start_workflow_config.js":
+/***/ "./src/config/send_data_config.js"
+/*!****************************************!*\
+  !*** ./src/config/send_data_config.js ***!
+  \****************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   SendDataConfig: () => (/* binding */ SendDataConfig)
+/* harmony export */ });
+class SendDataConfig {
+    sessionId
+    step
+    data
+
+    constructor(params) {
+        this.sessionId = params?.sessionId
+        this.step = params?.step
+        this.data = params?.data
+    }
+
+    static fromJson(jsonObject) {
+        if (jsonObject == null) return null
+        const result = new SendDataConfig()
+        result.sessionId = jsonObject["sessionId"]
+        result.step = jsonObject["step"]
+        result.data = jsonObject["data"]
+        return result
+    }
+
+    toJson() {
+        return {
+            "sessionId": this.sessionId,
+            "step": this.step,
+            "data": this.data,
+        }
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/config/start_session_config.js"
+/*!********************************************!*\
+  !*** ./src/config/start_session_config.js ***!
+  \********************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   StartSessionConfig: () => (/* binding */ StartSessionConfig)
+/* harmony export */ });
+class StartSessionConfig {
+    workflowId
+    metadata
+
+    constructor(params) {
+        this.workflowId = params?.workflowId
+        this.metadata = params?.metadata
+    }
+
+    static fromJson(jsonObject) {
+        if (jsonObject == null) return null
+        const result = new StartSessionConfig()
+        result.workflowId = jsonObject["workflowId"]
+        result.metadata = jsonObject["metadata"]
+        return result
+    }
+
+    toJson() {
+        return {
+            "workflowId": this.workflowId,
+            "metadata": this.metadata,
+        }
+    }
+}
+
+
+/***/ },
+
+/***/ "./src/config/start_workflow_config.js"
 /*!*********************************************!*\
   !*** ./src/config/start_workflow_config.js ***!
   \*********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -164,13 +244,13 @@ class StartWorkflowConfig {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./src/config/token_connection_config.js":
+/***/ "./src/config/token_connection_config.js"
 /*!***********************************************!*\
   !*** ./src/config/token_connection_config.js ***!
   \***********************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -198,13 +278,13 @@ class TokenConnectionConfig {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./src/internal/bridge.js":
+/***/ "./src/internal/bridge.js"
 /*!********************************!*\
   !*** ./src/internal/bridge.js ***!
   \********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -247,13 +327,13 @@ function setDidContinueRemoteSessionCompletion(completion) {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./src/internal/cordova.js":
+/***/ "./src/internal/cordova.js"
 /*!*********************************!*\
   !*** ./src/internal/cordova.js ***!
   \*********************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -278,13 +358,13 @@ class NativeEventEmitter {
     }
 }
 
-/***/ }),
+/***/ },
 
-/***/ "./src/model/workflow.js":
+/***/ "./src/model/workflow.js"
 /*!*******************************!*\
   !*** ./src/model/workflow.js ***!
   \*******************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -320,13 +400,13 @@ class Workflow {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./src/model/workflow_result.js":
+/***/ "./src/model/workflow_result.js"
 /*!**************************************!*\
   !*** ./src/model/workflow_result.js ***!
   \**************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -356,13 +436,13 @@ class WorkflowResult {
 }
 
 
-/***/ }),
+/***/ },
 
-/***/ "./src/model/workflow_step.js":
+/***/ "./src/model/workflow_step.js"
 /*!************************************!*\
   !*** ./src/model/workflow_step.js ***!
   \************************************/
-/***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
@@ -389,7 +469,7 @@ class WorkflowStep {
 }
 
 
-/***/ })
+/***/ }
 
 /******/ 	});
 /************************************************************************/
@@ -402,6 +482,12 @@ class WorkflowStep {
 /******/ 		var cachedModule = __webpack_module_cache__[moduleId];
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
+/******/ 		}
+/******/ 		// Check if module exists (development only)
+/******/ 		if (__webpack_modules__[moduleId] === undefined) {
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
 /******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
@@ -459,12 +545,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   CredentialsConnectionConfig: () => (/* reexport safe */ _config_credentials_connection_config__WEBPACK_IMPORTED_MODULE_2__.CredentialsConnectionConfig),
 /* harmony export */   IDV: () => (/* binding */ IDV),
 /* harmony export */   PrepareWorkflowConfig: () => (/* reexport safe */ _config_prepare_workflow_config__WEBPACK_IMPORTED_MODULE_4__.PrepareWorkflowConfig),
+/* harmony export */   SendDataConfig: () => (/* reexport safe */ _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__.SendDataConfig),
 /* harmony export */   SessionRestoreMode: () => (/* binding */ SessionRestoreMode),
+/* harmony export */   StartSessionConfig: () => (/* reexport safe */ _config_start_session_config__WEBPACK_IMPORTED_MODULE_6__.StartSessionConfig),
 /* harmony export */   StartWorkflowConfig: () => (/* reexport safe */ _config_start_workflow_config__WEBPACK_IMPORTED_MODULE_5__.StartWorkflowConfig),
 /* harmony export */   TokenConnectionConfig: () => (/* reexport safe */ _config_token_connection_config__WEBPACK_IMPORTED_MODULE_1__.TokenConnectionConfig),
-/* harmony export */   Workflow: () => (/* reexport safe */ _model_workflow__WEBPACK_IMPORTED_MODULE_6__.Workflow),
-/* harmony export */   WorkflowResult: () => (/* reexport safe */ _model_workflow_result__WEBPACK_IMPORTED_MODULE_7__.WorkflowResult),
-/* harmony export */   WorkflowStep: () => (/* reexport safe */ _model_workflow_step__WEBPACK_IMPORTED_MODULE_8__.WorkflowStep)
+/* harmony export */   Workflow: () => (/* reexport safe */ _model_workflow__WEBPACK_IMPORTED_MODULE_8__.Workflow),
+/* harmony export */   WorkflowResult: () => (/* reexport safe */ _model_workflow_result__WEBPACK_IMPORTED_MODULE_9__.WorkflowResult),
+/* harmony export */   WorkflowStep: () => (/* reexport safe */ _model_workflow_step__WEBPACK_IMPORTED_MODULE_10__.WorkflowStep)
 /* harmony export */ });
 /* harmony import */ var _internal_bridge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./internal/bridge */ "./src/internal/bridge.js");
 /* harmony import */ var _config_token_connection_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config/token_connection_config */ "./src/config/token_connection_config.js");
@@ -472,13 +560,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_api_key_connection_config__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./config/api_key_connection_config */ "./src/config/api_key_connection_config.js");
 /* harmony import */ var _config_prepare_workflow_config__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./config/prepare_workflow_config */ "./src/config/prepare_workflow_config.js");
 /* harmony import */ var _config_start_workflow_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config/start_workflow_config */ "./src/config/start_workflow_config.js");
-/* harmony import */ var _model_workflow__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./model/workflow */ "./src/model/workflow.js");
-/* harmony import */ var _model_workflow_result__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./model/workflow_result */ "./src/model/workflow_result.js");
-/* harmony import */ var _model_workflow_step__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./model/workflow_step */ "./src/model/workflow_step.js");
-
-
-
-
+/* harmony import */ var _config_start_session_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./config/start_session_config */ "./src/config/start_session_config.js");
+/* harmony import */ var _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./config/send_data_config */ "./src/config/send_data_config.js");
+/* harmony import */ var _model_workflow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./model/workflow */ "./src/model/workflow.js");
+/* harmony import */ var _model_workflow_result__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./model/workflow_result */ "./src/model/workflow_result.js");
+/* harmony import */ var _model_workflow_step__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./model/workflow_step */ "./src/model/workflow_step.js");
 
 
 
@@ -545,13 +631,13 @@ class IDV {
     async prepareWorkflow(config) {
         config = ensureInstance(config, _config_prepare_workflow_config__WEBPACK_IMPORTED_MODULE_4__.PrepareWorkflowConfig)
         const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('prepareWorkflow', [config?.toJson()])
-        return completionFromResponse(response, json => _model_workflow__WEBPACK_IMPORTED_MODULE_6__.Workflow.fromJson(json))
+        return completionFromResponse(response, json => _model_workflow__WEBPACK_IMPORTED_MODULE_8__.Workflow.fromJson(json))
     }
 
     async startWorkflow(config) {
         config = ensureInstance(config, _config_start_workflow_config__WEBPACK_IMPORTED_MODULE_5__.StartWorkflowConfig)
         const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('startWorkflow', [config?.toJson()])
-        return completionFromResponse(response, json => _model_workflow_result__WEBPACK_IMPORTED_MODULE_7__.WorkflowResult.fromJson(json))
+        return completionFromResponse(response, json => _model_workflow_result__WEBPACK_IMPORTED_MODULE_9__.WorkflowResult.fromJson(json))
     }
 
     async getWorkflows() {
@@ -559,11 +645,23 @@ class IDV {
         return completionFromResponse(response, json => {
             const result = []
             if (json != null) for (const item of json) {
-                const workflow = _model_workflow__WEBPACK_IMPORTED_MODULE_6__.Workflow.fromJson(item)
+                const workflow = _model_workflow__WEBPACK_IMPORTED_MODULE_8__.Workflow.fromJson(item)
                 if (workflow != null) result.push(workflow)
             }
             return result
         })
+    }
+
+    async startSession(config) {
+        config = ensureInstance(config, _config_start_session_config__WEBPACK_IMPORTED_MODULE_6__.StartSessionConfig)
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('startSession', [config.toJson()])
+        return completionFromResponse(response)
+    }
+
+    async sendData(config) {
+        config = ensureInstance(config, _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__.SendDataConfig)
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('sendData', [config.toJson()])
+        return completionFromResponse(response)
     }
 }
 
