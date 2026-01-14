@@ -1,0 +1,46 @@
+{
+  "name": "idv",
+  "scripts": {
+    "setup": "scripts/setup.sh",
+    "ios": "scripts/ios.sh",
+    "android": "scripts/android.sh"
+  },
+  "dependencies": {
+    "@angular-devkit/build-angular": "^21.0.5",
+    "@angular/cli": "^21.0.5",
+    "@angular/common": "^21.0.8",
+    "@angular/compiler-cli": "^21.0.8",
+    "@angular/core": "^21.0.8",
+    "@angular/forms": "^21.0.8",
+    "@angular/platform-browser-dynamic": "^21.0.8",
+    "@angular/router": "^21.0.8",
+    "@ionic/angular": "^8.7.16",
+    "@ionic/cordova-builders": "^12.3.0",
+    "@regulaforensics/idv": "3.2.70",
+    "@regulaforensics/document-reader": "9.1.505",
+    "@regulaforensics/face-sdk": "7.2.691",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.1.1281",
+    "@regulaforensics/face-core-basic": "7.2.265",
+    "@regulaforensics/idv-module-document-reader": "3.2.50",
+    "@regulaforensics/idv-module-face": "3.2.51",
+    "cordova-android": "^14.0.1",
+    "cordova-ios": "^7.1.1",
+    "cordova-plugin-ionic-webview": "^5.0.1"
+  },
+  "cordova": {
+    "plugins": {
+      "@regulaforensics/document-reader": {},
+      "@regulaforensics/document-reader-core-fullauthrfid": {},
+      "@regulaforensics/face-sdk": {},
+      "@regulaforensics/face-core-basic": {},
+      "@regulaforensics/idv": {},
+      "@regulaforensics/idv-module-face": {},
+      "@regulaforensics/idv-module-document-reader": {},
+      "cordova-plugin-ionic-webview": {}
+    },
+    "platforms": [
+      "android",
+      "ios"
+    ]
+  }
+}
