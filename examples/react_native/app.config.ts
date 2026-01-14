@@ -11,6 +11,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     infoPlist: {
       NSCameraUsageDescription: 'To use camera',
       NSPhotoLibraryUsageDescription: 'To use gallery',
+      NSLocationWhenInUseUsageDescription: 'To use location',
       NFCReaderUsageDescription: 'To use NFC',
       'com.apple.developer.nfc.readersession.iso7816.select-identifiers': [
         'A0000002471001',
@@ -27,7 +28,11 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   android: {
     package: 'com.regula.example.idv.react',
-    permissions: ['android.permission.NFC'],
+    permissions: [
+      'android.permission.NFC',
+      'android.permission.ACCESS_COARSE_LOCATION',
+      'android.permission.ACCESS_FINE_LOCATION'
+    ],
     edgeToEdgeEnabled: true
   },
   plugins: [

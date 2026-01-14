@@ -14,6 +14,8 @@
         <preference name="GradlePluginKotlinVersion" value="2.1.20" />
         <config-file parent="/*" target="AndroidManifest.xml">
             <uses-permission android:name="android.permission.NFC" />
+            <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+            <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
         </config-file>
         <edit-config file="app/src/main/AndroidManifest.xml" mode="merge" target="/manifest/application">
             <application android:usesCleartextTraffic="true" />
@@ -31,6 +33,9 @@
         </config-file>
         <config-file parent="NSPhotoLibraryUsageDescription" target="*-Info.plist">
             <string>To pick images</string>
+        </config-file>
+        <config-file parent="NSLocationWhenInUseUsageDescription" target="*-Info.plist">
+            <string>To use location</string>
         </config-file>
         <config-file parent="NFCReaderUsageDescription" target="*-Info.plist">
             <string>To use NFC</string>
