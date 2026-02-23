@@ -1,5 +1,5 @@
 <?xml version='1.0' encoding='utf-8'?>
-<plugin id="@regulaforensics/idv" version="3.2.69-beta" xmlns="http://apache.org/cordova/ns/plugins/1.0">
+<plugin id="@regulaforensics/idv" version="3.4.74-beta" xmlns="http://apache.org/cordova/ns/plugins/1.0">
   <name>IDV</name>
   <description>Cordova plugin for Regula IDV</description>
   <license>commercial</license>
@@ -12,12 +12,12 @@
   <platform name="ios">
     <config-file target="config.xml" parent="/widget">
       <feature name="IDV">
-        <param name="ios-package" value="CVDIDV" />
+        <param name="ios-package" value="CDVIDV" />
       </feature>
       <preference name="deployment-target" value="14.0" />
       <preference name="SwiftVersion" value="5" />
     </config-file>
-    <source-file src="ios/CVDIDV.swift" />
+    <source-file src="ios/CDVIDV.swift" />
     <source-file src="ios/Main.swift" />
     <source-file src="ios/JSONConstructor.swift" />
     <source-file src="ios/Utils.swift" />
@@ -26,7 +26,7 @@
         <source url="https://github.com/CocoaPods/Specs.git" />
       </config>
       <pods>
-        <pod name="IDVSDK" spec="3.2.1670" />
+        <pod name="IDVSDK" spec="3.3.1715" />
       </pods>
     </podspec>
   </platform>
@@ -34,11 +34,11 @@
   <platform name="android">
     <config-file parent="/*" target="res/xml/config.xml">
       <feature name="IDV">
-        <param name="android-package" value="com.regula.plugin.idv.CVDIDV" />
+        <param name="android-package" value="com.regula.plugin.idv.CDVIDV" />
       </feature>
     </config-file>
     <framework src="android/cordova.gradle" custom="true" type="gradleReference" />
-    <source-file src="android/CVDIDV.kt" target-dir="java/com.regula.plugin.idv" />
+    <source-file src="android/CDVIDV.kt" target-dir="java/com.regula.plugin.idv" />
     <source-file src="android/src/main/java/com/regula/plugin/idv/Main.kt" target-dir="java/com.regula.plugin.idv" />
     <source-file src="android/src/main/java/com/regula/plugin/idv/JSONConstructor.kt" target-dir="java/com.regula.plugin.idv" />
     <source-file src="android/src/main/java/com/regula/plugin/idv/Utils.kt" target-dir="java/com.regula.plugin.idv" />

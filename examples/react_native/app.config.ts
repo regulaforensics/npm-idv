@@ -45,7 +45,8 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
           { url: 'https://maven.regulaforensics.com/RegulaDocumentReader/Nightly' },
           { url: 'https://maven.regulaforensics.com/RegulaDocumentReader/Stage' }
         ]
-      }
+      },
+      ios: { networkInspector: false }
     }]
   ]
 })

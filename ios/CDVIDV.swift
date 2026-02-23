@@ -1,6 +1,6 @@
 var eventCallbackIds: [String: String] = [:]
 private var args: [Any?] = []
-private var this: CVDIDV?
+private var this: CDVIDV?
 
 func sendEvent(_ event: String, _ data: Any? = nil) {
     var callbackId = event
@@ -24,8 +24,8 @@ func argsNullable<T>(_ index: Int) -> T? {
     return args[index] as! T?
 }
 
-@objc(CVDIDV)
-class CVDIDV: CDVPlugin {
+@objc(CDVIDV)
+class CDVIDV: CDVPlugin {
     @objc(exec:)
     func exec(_ command: CDVInvokedUrlCommand) {
         this = self
@@ -42,10 +42,9 @@ class CVDIDV: CDVPlugin {
 }
 
 let rootViewController: () -> UIViewController? = {
-    for window in UIApplication.shared.windows {
-        if window.isKeyWindow {
-            return window.rootViewController
-        }
-    }
-    return nil
+    return UIApplication.shared.connectedScenes
+      .compactMap { $0 as? UIWindowScene }
+      .flatMap { $0.windows }
+      .first { $0.isKeyWindow }?
+      .rootViewController
 }
