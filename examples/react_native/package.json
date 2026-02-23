@@ -8,7 +8,7 @@
     "start": "expo start"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.4.74-beta",
+    "@regulaforensics/idv": "3.4.84-beta",
     "@regulaforensics/document-reader": "9.2.621",
     "@regulaforensics/face-sdk": "8.1.796",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.2.1513",

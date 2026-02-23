@@ -2,14 +2,14 @@ var eventCallbackIds: [String: String] = [:]
 private var args: [Any?] = []
 private var this: CDVIDV?
 
-func sendEvent(_ event: String, _ data: Any? = nil) {
+func sendEvent(_ event: String, _ data: Any? = "") {
     var callbackId = event
     let eventId = eventCallbackIds[event]
     if eventId != nil { callbackId = eventId! }
 
-    var sendable = data.toSendable() as Any?
-    if sendable is NSNull { sendable = nil }
-    let result = CDVPluginResult(status: CDVCommandStatus_OK, messageAs: sendable as! String?)!
+    var sendable = data.toSendable()
+    if sendable is NSNull { sendable = "" }
+    let result = CDVPluginResult(status: CDVCommandStatus.ok, messageAs: sendable as! String)
     result.setKeepCallbackAs(true)
     
     this!.commandDelegate.send(result, callbackId: callbackId)
