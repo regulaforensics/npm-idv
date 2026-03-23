@@ -289,6 +289,7 @@ class TokenConnectionConfig {
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   exec: () => (/* binding */ exec),
+/* harmony export */   serializeInterface: () => (/* binding */ serializeInterface),
 /* harmony export */   setDidContinueRemoteSessionCompletion: () => (/* binding */ setDidContinueRemoteSessionCompletion),
 /* harmony export */   setDidEndSessionCompletion: () => (/* binding */ setDidEndSessionCompletion),
 /* harmony export */   setDidStartRestoreSessionCompletion: () => (/* binding */ setDidStartRestoreSessionCompletion),
@@ -302,6 +303,12 @@ var eventManager = new _cordova__WEBPACK_IMPORTED_MODULE_0__.NativeEventEmitter(
 
 async function exec(name, params) {
     return RNIDV.exec(name, params)
+}
+
+function serializeInterface(value, ctor) {
+    if (value == null) return null
+    if (value instanceof ctor) return value.toJson()
+    return (new ctor(value)).toJson()
 }
 
 function setEvent(id, completion, transform) {
@@ -483,12 +490,6 @@ class WorkflowStep {
 /******/ 		if (cachedModule !== undefined) {
 /******/ 			return cachedModule.exports;
 /******/ 		}
-/******/ 		// Check if module exists (development only)
-/******/ 		if (__webpack_modules__[moduleId] === undefined) {
-/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
-/******/ 			e.code = 'MODULE_NOT_FOUND';
-/******/ 			throw e;
-/******/ 		}
 /******/ 		// Create a new module (and put it into the cache)
 /******/ 		var module = __webpack_module_cache__[moduleId] = {
 /******/ 			// no module.id needed
@@ -497,6 +498,12 @@ class WorkflowStep {
 /******/ 		};
 /******/ 	
 /******/ 		// Execute the module function
+/******/ 		if (!(moduleId in __webpack_modules__)) {
+/******/ 			delete __webpack_module_cache__[moduleId];
+/******/ 			var e = new Error("Cannot find module '" + moduleId + "'");
+/******/ 			e.code = 'MODULE_NOT_FOUND';
+/******/ 			throw e;
+/******/ 		}
 /******/ 		__webpack_modules__[moduleId](module, module.exports, __webpack_require__);
 /******/ 	
 /******/ 		// Return the exports of the module
@@ -611,32 +618,27 @@ class IDV {
     }
 
     async configureWithToken(config) {
-        config = ensureInstance(config, _config_token_connection_config__WEBPACK_IMPORTED_MODULE_1__.TokenConnectionConfig)
-        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('configureWithToken', [config?.toJson()])
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('configureWithToken', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_token_connection_config__WEBPACK_IMPORTED_MODULE_1__.TokenConnectionConfig)])
         return completionFromResponse(response, success => success?.map(item => String(item)))
     }
 
     async configureWithCredentials(config) {
-        config = ensureInstance(config, _config_credentials_connection_config__WEBPACK_IMPORTED_MODULE_2__.CredentialsConnectionConfig)
-        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('configureWithCredentials', [config?.toJson()])
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('configureWithCredentials', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_credentials_connection_config__WEBPACK_IMPORTED_MODULE_2__.CredentialsConnectionConfig)])
         return completionFromResponse(response)
     }
 
     async configureWithApiKey(config) {
-        config = ensureInstance(config, _config_api_key_connection_config__WEBPACK_IMPORTED_MODULE_3__.ApiKeyConnectionConfig)
-        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('configureWithApiKey', [config?.toJson()])
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('configureWithApiKey', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_api_key_connection_config__WEBPACK_IMPORTED_MODULE_3__.ApiKeyConnectionConfig)])
         return completionFromResponse(response)
     }
 
     async prepareWorkflow(config) {
-        config = ensureInstance(config, _config_prepare_workflow_config__WEBPACK_IMPORTED_MODULE_4__.PrepareWorkflowConfig)
-        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('prepareWorkflow', [config?.toJson()])
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('prepareWorkflow', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_prepare_workflow_config__WEBPACK_IMPORTED_MODULE_4__.PrepareWorkflowConfig)])
         return completionFromResponse(response, json => _model_workflow__WEBPACK_IMPORTED_MODULE_8__.Workflow.fromJson(json))
     }
 
     async startWorkflow(config) {
-        config = ensureInstance(config, _config_start_workflow_config__WEBPACK_IMPORTED_MODULE_5__.StartWorkflowConfig)
-        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('startWorkflow', [config?.toJson()])
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('startWorkflow', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_start_workflow_config__WEBPACK_IMPORTED_MODULE_5__.StartWorkflowConfig)])
         return completionFromResponse(response, json => _model_workflow_result__WEBPACK_IMPORTED_MODULE_9__.WorkflowResult.fromJson(json))
     }
 
@@ -653,14 +655,12 @@ class IDV {
     }
 
     async startSession(config) {
-        config = ensureInstance(config, _config_start_session_config__WEBPACK_IMPORTED_MODULE_6__.StartSessionConfig)
-        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('startSession', [config.toJson()])
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('startSession', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_start_session_config__WEBPACK_IMPORTED_MODULE_6__.StartSessionConfig)])
         return completionFromResponse(response)
     }
 
     async sendData(config) {
-        config = ensureInstance(config, _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__.SendDataConfig)
-        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('sendData', [config.toJson()])
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('sendData', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__.SendDataConfig)])
         return completionFromResponse(response)
     }
 }
@@ -676,12 +676,6 @@ function completionFromResponse(response, transform) {
     const error = jsonObject['error']
     if (transform != null && success != null) success = transform(success)
     return [success, error]
-}
-
-function ensureInstance(value, ctor) {
-    if (value == null) return null
-    if (value instanceof ctor) return value
-    return new ctor(value)
 }
 
 })();

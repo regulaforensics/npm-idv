@@ -1,29 +1,3 @@
-var eventCallbackIds: [String: String] = [:]
-private var args: [Any?] = []
-private var this: CDVIDV?
-
-func sendEvent(_ event: String, _ data: Any? = "") {
-    var callbackId = event
-    let eventId = eventCallbackIds[event]
-    if eventId != nil { callbackId = eventId! }
-
-    var sendable = data.toSendable()
-    if sendable is NSNull { sendable = "" }
-    let result = CDVPluginResult(status: CDVCommandStatus.ok, messageAs: sendable as! String)
-    result.setKeepCallbackAs(true)
-    
-    this!.commandDelegate.send(result, callbackId: callbackId)
-}
-
-func args<T>(_ index: Int) -> T {
-    return args[index] as! T
-}
-
-func argsNullable<T>(_ index: Int) -> T? {
-    if (args[index] is NSNull) { return nil }
-    return args[index] as! T?
-}
-
 @objc(CDVIDV)
 class CDVIDV: CDVPlugin {
     @objc(exec:)
@@ -39,6 +13,24 @@ class CDVIDV: CDVPlugin {
 
         methodCall(method, { data in sendEvent(command.callbackId, data) })
     }
+}
+
+var this: CDVIDV?
+var eventCallbackIds: [String: String] = [:]
+func sendEvent(_ event: String, _ data: Any? = "") {
+    var callbackId = event
+    let eventId = eventCallbackIds[event]
+    if eventId != nil { callbackId = eventId! }
+
+    // In this section unreasonable casts and optionals are made to
+    // ensure that this code works with both cordova-ios@7 and cordova-ios@8.
+    var sendable = data.toSendable()
+    if sendable is NSNull { sendable = "" }
+    let message = sendable as! String
+    let result: CDVPluginResult? = CDVPluginResult(status: CDVCommandStatus.ok, messageAs: message)
+    result!.setKeepCallbackAs(true)
+    
+    this!.commandDelegate.send(result!, callbackId: callbackId)
 }
 
 let rootViewController: () -> UIViewController? = {
