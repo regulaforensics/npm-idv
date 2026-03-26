@@ -7,6 +7,12 @@ export async function exec(name, params) {
     return RNIDV.exec(name, params)
 }
 
+export function serializeInterface(value, ctor) {
+    if (value == null) return null
+    if (value instanceof ctor) return value.toJson()
+    return (new ctor(value)).toJson()
+}
+
 function setEvent(id, completion, transform) {
     eventManager.removeAllListeners(id)
     if (transform === undefined) transform = func => func

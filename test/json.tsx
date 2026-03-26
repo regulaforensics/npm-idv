@@ -22,6 +22,15 @@ export var startWorkflowConfig = {
         "test2": "test3",
     },
 }
+export var startSessionConfig = {
+  "workflowId": "test1",
+  "metadata": {"test1": 0, "test2": "test3", "test4": true},
+}
+export var sendDataConfig = {
+  "sessionId": "test1",
+  "step": "test2",
+  "data": {"test1": 0, "test2": "test3", "test4": true},
+}
 
 export var workflow = {
     "id": "test1",

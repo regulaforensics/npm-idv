@@ -1,5 +1,6 @@
 package com.regula.plugin.idv
 
+import android.app.Activity
 import android.content.Context
 import android.util.Log
 import org.apache.cordova.CallbackContext
@@ -13,6 +14,8 @@ lateinit var args: JSONArray
 lateinit var binding: CordovaPlugin
 val context: Context
     get() = binding.cordova.context
+val activity: Activity
+    get() = binding.cordova.activity
 
 fun sendEvent(callbackId: String, data: Any? = "") {
     val pluginResult = when (data) {
@@ -29,7 +32,7 @@ fun <T> argsNullable(index: Int): T? = if (args.get(index).toString() != "null")
     args.get(index) as T
 } else null
 
-class CVDIDV : CordovaPlugin() {
+class CDVIDV : CordovaPlugin() {
     init {
         binding = this
     }

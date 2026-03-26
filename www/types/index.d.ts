@@ -3,18 +3,13 @@ import { CredentialsConnectionConfig } from './config/credentials_connection_con
 import { ApiKeyConnectionConfig } from './config/api_key_connection_config'
 import { PrepareWorkflowConfig } from './config/prepare_workflow_config'
 import { StartWorkflowConfig } from './config/start_workflow_config'
+import { StartSessionConfig } from './config/start_session_config'
+import { SendDataConfig } from './config/send_data_config'
 import { Workflow } from './model/workflow'
 import { WorkflowResult } from './model/workflow_result'
 import { WorkflowStep } from './model/workflow_step'
 
-export { TokenConnectionConfig }
-export { CredentialsConnectionConfig }
-export { ApiKeyConnectionConfig }
-export { PrepareWorkflowConfig }
-export { StartWorkflowConfig }
-export { Workflow }
-export { WorkflowResult }
-export { WorkflowStep }
+export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, Workflow, WorkflowResult, WorkflowStep }
 
 /**
  * Entry point of the Regula IDV.
@@ -47,6 +42,10 @@ export class IDV {
     startWorkflow(config?: StartWorkflowConfig): Promise<[WorkflowResult | null, string | null]>
 
     getWorkflows(): Promise<[Workflow[] | null, string | null]>
+
+    startSession(config: StartSessionConfig): Promise<[string | null, string | null]>
+
+    sendData(config: SendDataConfig): Promise<[boolean, string | null]>
 }
 
 export enum SessionRestoreMode {

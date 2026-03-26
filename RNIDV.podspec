@@ -5,7 +5,7 @@ source = File.join(__dir__, 'ios')
 
 Pod::Spec.new do |s|
   s.name         = 'RNIDV'
-  s.version      = '3.2.1-nightly'
+  s.version      = '9.3.87-nightly'
   s.summary      = package['description']
   s.license      = package['license']
 
@@ -15,7 +15,7 @@ Pod::Spec.new do |s|
   s.source       = { http: "file:#{source}" }
   s.ios.deployment_target = '14.0'
   s.source_files = [ 'ios/**/*.swift', 'ios/**/RN*.m' ]
-  s.exclude_files = [ 'ios/CVDIDV.swift' ]
+  s.exclude_files = [ 'ios/CDVIDV.swift' ]
   s.dependency 'IDVSDKNightly', '0.1.184'
   s.dependency 'React'
 end
