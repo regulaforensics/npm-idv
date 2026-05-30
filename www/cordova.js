@@ -292,6 +292,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   serializeInterface: () => (/* binding */ serializeInterface),
 /* harmony export */   setDidContinueRemoteSessionCompletion: () => (/* binding */ setDidContinueRemoteSessionCompletion),
 /* harmony export */   setDidEndSessionCompletion: () => (/* binding */ setDidEndSessionCompletion),
+/* harmony export */   setDidReceiveLogEventCompletion: () => (/* binding */ setDidReceiveLogEventCompletion),
 /* harmony export */   setDidStartRestoreSessionCompletion: () => (/* binding */ setDidStartRestoreSessionCompletion),
 /* harmony export */   setDidStartSessionCompletion: () => (/* binding */ setDidStartSessionCompletion)
 /* harmony export */ });
@@ -331,6 +332,15 @@ function setDidStartRestoreSessionCompletion(completion) {
 
 function setDidContinueRemoteSessionCompletion(completion) {
     setEvent('didContinueRemoteSessionEvent', completion)
+}
+
+function setDidReceiveLogEventCompletion(completion) {
+    setEvent('didReceiveLogEventEvent', completion, json => {
+        var jsonObject = JSON.parse(json)
+        var level = jsonObject["level"];
+        var message = jsonObject["message"];
+        return [level, message]
+    })
 }
 
 
@@ -551,6 +561,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   ApiKeyConnectionConfig: () => (/* reexport safe */ _config_api_key_connection_config__WEBPACK_IMPORTED_MODULE_3__.ApiKeyConnectionConfig),
 /* harmony export */   CredentialsConnectionConfig: () => (/* reexport safe */ _config_credentials_connection_config__WEBPACK_IMPORTED_MODULE_2__.CredentialsConnectionConfig),
 /* harmony export */   IDV: () => (/* binding */ IDV),
+/* harmony export */   IdvLogLevel: () => (/* binding */ IdvLogLevel),
 /* harmony export */   PrepareWorkflowConfig: () => (/* reexport safe */ _config_prepare_workflow_config__WEBPACK_IMPORTED_MODULE_4__.PrepareWorkflowConfig),
 /* harmony export */   SendDataConfig: () => (/* reexport safe */ _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__.SendDataConfig),
 /* harmony export */   SessionRestoreMode: () => (/* binding */ SessionRestoreMode),
@@ -597,10 +608,15 @@ class IDV {
         ;(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.setDidEndSessionCompletion)(value.didEndSession)
         ;(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.setDidStartRestoreSessionCompletion)(value.didStartRestoreSession)
         ;(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.setDidContinueRemoteSessionCompletion)(value.didContinueRemoteSession)
+        setDidReceiveLogEventCompletion(value.didReceiveLogEvent)
     }
 
     set sessionRestoreMode(val) {
         (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('setSessionRestoreMode', [val])
+    }
+
+    set logLevel(val) {
+        (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('setLogLevel', [val])
     }
 
     async getCurrentSessionId() {
@@ -668,6 +684,13 @@ class IDV {
 const SessionRestoreMode = {
     ENABLED: 0,
     DISABLED: 1,
+}
+
+const IdvLogLevel = {
+    DEBUG: 0,
+    INFO: 1,
+    WARNING: 2,
+    ERROR: 3,
 }
 
 function completionFromResponse(response, transform) {

@@ -34,3 +34,12 @@ export function setDidStartRestoreSessionCompletion(completion) {
 export function setDidContinueRemoteSessionCompletion(completion) {
     setEvent('didContinueRemoteSessionEvent', completion)
 }
+
+export function setDidReceiveLogEventCompletion(completion) {
+    setEvent('didReceiveLogEventEvent', completion, json => {
+        var jsonObject = JSON.parse(json)
+        var level = jsonObject["level"];
+        var message = jsonObject["message"];
+        return [level, message]
+    })
+}

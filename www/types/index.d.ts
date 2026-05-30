@@ -25,6 +25,9 @@ export class IDV {
 
     set sessionRestoreMode(value: SessionRestoreMode)
 
+    /** Default: empty set. */
+    set logLevel(value: Set<IdvLogLevel>)
+
     getCurrentSessionId(): Promise<string | null>
 
     initialize(): Promise<[boolean, string | null]>
@@ -58,4 +61,14 @@ export interface IDVListenerOptions {
     didEndSession?: () => void
     didStartRestoreSession?: () => void
     didContinueRemoteSession?: () => void
+    didReceiveLogEvent?: IdvLogEventCompletion
+}
+
+export type IdvLogEventCompletion = (level: IdvLogLevel, message: string) => void;
+
+export enum IdvLogLevel {
+    DEBUG = 0,
+    INFO = 1,
+    WARNING = 2,
+    ERROR = 3,
 }

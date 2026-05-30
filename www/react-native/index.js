@@ -23,10 +23,15 @@ export class IDV {
         setDidEndSessionCompletion(value.didEndSession)
         setDidStartRestoreSessionCompletion(value.didStartRestoreSession)
         setDidContinueRemoteSessionCompletion(value.didContinueRemoteSession)
+        setDidReceiveLogEventCompletion(value.didReceiveLogEvent)
     }
 
     set sessionRestoreMode(val) {
         exec('setSessionRestoreMode', [val])
+    }
+
+    set logLevel(val) {
+        exec('setLogLevel', [val])
     }
 
     async getCurrentSessionId() {
@@ -94,6 +99,13 @@ export class IDV {
 export const SessionRestoreMode = {
     ENABLED: 0,
     DISABLED: 1,
+}
+
+export const IdvLogLevel = {
+    DEBUG: 0,
+    INFO: 1,
+    WARNING: 2,
+    ERROR: 3,
 }
 
 function completionFromResponse(response, transform) {
