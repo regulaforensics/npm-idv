@@ -8,7 +8,7 @@
     "start": "expo start"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.6.97-nightly",
+    "@regulaforensics/idv": "3.6.98-nightly",
     "@regulaforensics/idv-module-document-reader": "3.6.78-nightly",
     "@regulaforensics/idv-module-face": "3.6.77-nightly",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.5.2382",

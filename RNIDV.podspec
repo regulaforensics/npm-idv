@@ -5,7 +5,7 @@ source = File.join(__dir__, 'ios')
 
 Pod::Spec.new do |s|
   s.name         = 'RNIDV'
-  s.version      = '3.6.97-nightly'
+  s.version      = '3.6.98-nightly'
   s.summary      = package['description']
   s.license      = package['license']
 
