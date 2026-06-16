@@ -25,7 +25,7 @@ rootProject.allprojects {
 
 dependencies {
     implementation 'com.facebook.react:react-native:+'
-    implementation('com.regula.idv:api:3.6.274') {
+    implementation('com.regula.idv:api:3.6.281') {
         transitive = true
     }
 }
