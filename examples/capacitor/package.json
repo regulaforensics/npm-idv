@@ -1,0 +1,28 @@
+{
+  "name": "idv",
+  "scripts": {
+    "setup": "scripts/setup.sh",
+    "ios": "scripts/ios.sh",
+    "android": "scripts/android.sh"
+  },
+  "dependencies": {
+    "@regulaforensics/idv": "3.8.122-rc",
+    "@regulaforensics/idv-module-document-reader": "9.6.106-rc",
+    "@regulaforensics/idv-module-face": "9.6.107-rc",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2474-rc",
+    "@regulaforensics/face-core-basic": "8.3.622-rc",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0",
+    "@ionic/react": "^8.7.17",
+    "@vitejs/plugin-react": "^5.1.2",
+    "vite-plugin-static-copy": "^3.2.0",
+    "@types/react-router-dom": "^5.3.3"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
+  }
+}

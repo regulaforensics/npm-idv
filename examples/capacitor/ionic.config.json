@@ -1,0 +1,7 @@
+{
+  "name": "IDV",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "react-vite"
+}

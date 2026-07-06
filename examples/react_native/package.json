@@ -1,0 +1,32 @@
+{
+  "name": "idv",
+  "main": "./index.tsx",
+  "scripts": {
+    "setup": "scripts/setup.sh",
+    "ios": "scripts/ios.sh",
+    "android": "scripts/android.sh",
+    "start": "expo start"
+  },
+  "dependencies": {
+    "@regulaforensics/idv": "3.8.122-rc",
+    "@regulaforensics/idv-module-document-reader": "9.6.106-rc",
+    "@regulaforensics/idv-module-face": "9.6.107-rc",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2474-rc",
+    "@regulaforensics/face-core-basic": "8.3.622-rc",
+    "expo": "^56.0.8",
+    "expo-dev-client": "^56.0.18",
+    "expo-build-properties": "^56.0.16",
+    "expo-custom-assets": "^1.5.0",
+    "react-native": "^0.85.3",
+    "@react-native/metro-config": "^0.85.3",
+    "react": "^19.2.7",
+    "@types/react": "^19.2.16",
+    "react-native-webview": "^13.16.1",
+    "typescript": "6.0.3"
+  },
+  "overrides": {
+    "postcss": "^8.5.10",
+    "uuid": "^14.0.0",
+    "js-yaml": "^4.1.1"
+  }
+}
