@@ -1,4 +1,4 @@
-import { exec, setDidStartSessionCompletion, setDidEndSessionCompletion, setDidStartRestoreSessionCompletion, setDidContinueRemoteSessionCompletion } from './internal/bridge'
+import { exec, serializeInterface, setDidStartSessionCompletion, setDidEndSessionCompletion, setDidStartRestoreSessionCompletion, setDidContinueRemoteSessionCompletion } from './internal/bridge'
 
 import { TokenConnectionConfig } from './config/token_connection_config'
 import { CredentialsConnectionConfig } from './config/credentials_connection_config'
@@ -7,11 +7,12 @@ import { PrepareWorkflowConfig } from './config/prepare_workflow_config'
 import { StartWorkflowConfig } from './config/start_workflow_config'
 import { StartSessionConfig } from './config/start_session_config'
 import { SendDataConfig } from './config/send_data_config'
+import { LoginConfig } from './config/login_config'
 import { Workflow } from './model/workflow'
 import { WorkflowResult } from './model/workflow_result'
 import { WorkflowStep } from './model/workflow_step'
 
-export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, Workflow, WorkflowResult, WorkflowStep }
+export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, LoginConfig, Workflow, WorkflowResult, WorkflowStep }
 
 export class IDV {
     static get instance() { return IDV._instance }
@@ -23,10 +24,15 @@ export class IDV {
         setDidEndSessionCompletion(value.didEndSession)
         setDidStartRestoreSessionCompletion(value.didStartRestoreSession)
         setDidContinueRemoteSessionCompletion(value.didContinueRemoteSession)
+        setDidReceiveLogEventCompletion(value.didReceiveLogEvent)
     }
 
     set sessionRestoreMode(val) {
         exec('setSessionRestoreMode', [val])
+    }
+
+    set logLevel(val) {
+        exec('setLogLevel', [val])
     }
 
     async getCurrentSessionId() {
@@ -44,32 +50,27 @@ export class IDV {
     }
 
     async configureWithToken(config) {
-        config = ensureInstance(config, TokenConnectionConfig)
-        const response = await exec('configureWithToken', [config?.toJson()])
+        const response = await exec('configureWithToken', [serializeInterface(config, TokenConnectionConfig)])
         return completionFromResponse(response, success => success?.map(item => String(item)))
     }
 
     async configureWithCredentials(config) {
-        config = ensureInstance(config, CredentialsConnectionConfig)
-        const response = await exec('configureWithCredentials', [config?.toJson()])
+        const response = await exec('configureWithCredentials', [serializeInterface(config, CredentialsConnectionConfig)])
         return completionFromResponse(response)
     }
 
     async configureWithApiKey(config) {
-        config = ensureInstance(config, ApiKeyConnectionConfig)
-        const response = await exec('configureWithApiKey', [config?.toJson()])
+        const response = await exec('configureWithApiKey', [serializeInterface(config, ApiKeyConnectionConfig)])
         return completionFromResponse(response)
     }
 
     async prepareWorkflow(config) {
-        config = ensureInstance(config, PrepareWorkflowConfig)
-        const response = await exec('prepareWorkflow', [config?.toJson()])
+        const response = await exec('prepareWorkflow', [serializeInterface(config, PrepareWorkflowConfig)])
         return completionFromResponse(response, json => Workflow.fromJson(json))
     }
 
     async startWorkflow(config) {
-        config = ensureInstance(config, StartWorkflowConfig)
-        const response = await exec('startWorkflow', [config?.toJson()])
+        const response = await exec('startWorkflow', [serializeInterface(config, StartWorkflowConfig)])
         return completionFromResponse(response, json => WorkflowResult.fromJson(json))
     }
 
@@ -86,14 +87,17 @@ export class IDV {
     }
 
     async startSession(config) {
-        config = ensureInstance(config, StartSessionConfig)
-        const response = await exec('startSession', [config.toJson()])
+        const response = await exec('startSession', [serializeInterface(config, StartSessionConfig)])
         return completionFromResponse(response)
     }
 
     async sendData(config) {
-        config = ensureInstance(config, SendDataConfig)
-        const response = await exec('sendData', [config.toJson()])
+        const response = await exec('sendData', [serializeInterface(config, SendDataConfig)])
+        return completionFromResponse(response)
+    }
+
+    async startLogin(config) {
+        const response = await exec('startLogin', [serializeInterface(config, LoginConfig)])
         return completionFromResponse(response)
     }
 }
@@ -103,16 +107,17 @@ export const SessionRestoreMode = {
     DISABLED: 1,
 }
 
+export const IdvLogLevel = {
+    DEBUG: 0,
+    INFO: 1,
+    WARNING: 2,
+    ERROR: 3,
+}
+
 function completionFromResponse(response, transform) {
     const jsonObject = JSON.parse(response)
     let success = jsonObject['success']
     const error = jsonObject['error']
     if (transform != null && success != null) success = transform(success)
     return [success, error]
-}
-
-function ensureInstance(value, ctor) {
-    if (value == null) return null
-    if (value instanceof ctor) return value
-    return new ctor(value)
 }

@@ -23,7 +23,7 @@ In the [examples](examples/) folder you can find 3 demo applications:
 Each demo app has its own readme file with instructions on building and installation.
 
 ## Documentation
-* [Documentation](https://docs.regulaforensics.com/develop/idv-sdk/mobile)
+* [Documentation](https://docs.regulaforensics.com/develop/idv/integration/installation/mobile/javascript/)
 * [API Reference](https://dev.regulaforensics.com/npm-idv)
 
 ## Support

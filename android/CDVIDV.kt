@@ -32,7 +32,7 @@ fun <T> argsNullable(index: Int): T? = if (args.get(index).toString() != "null")
     args.get(index) as T
 } else null
 
-class CVDIDV : CordovaPlugin() {
+class CDVIDV : CordovaPlugin() {
     init {
         binding = this
     }

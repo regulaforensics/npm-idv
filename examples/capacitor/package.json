@@ -6,22 +6,23 @@
     "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.2.70",
-    "@regulaforensics/document-reader": "9.1.505",
-    "@regulaforensics/face-sdk": "7.2.691",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.1.1281",
-    "@regulaforensics/face-core-basic": "7.2.265",
-    "@regulaforensics/idv-module-document-reader": "3.2.50",
-    "@regulaforensics/idv-module-face": "3.2.51",
-    "@capacitor/cli": "7.0.1",
-    "@capacitor/core": "7.0.1",
-    "@capacitor/app": "7.0.0",
-    "@capacitor/ios": "7.0.1",
-    "@capacitor/android": "7.0.1",
-    "@capacitor/status-bar": "7.0.0",
-    "@ionic/react": "8.4.3",
-    "@vitejs/plugin-react": "4.3.4",
-    "vite-plugin-static-copy": "3.1.2",
-    "@types/react-router-dom": "5.3.3"
+    "@regulaforensics/idv": "3.8.130",
+    "@regulaforensics/idv-module-document-reader": "3.8.108",
+    "@regulaforensics/idv-module-face": "3.8.109",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.6.2444",
+    "@regulaforensics/face-core-basic": "8.2.521",
+    "@capacitor/cli": "^8.0.0",
+    "@capacitor/core": "^8.0.0",
+    "@capacitor/app": "^8.0.0",
+    "@capacitor/ios": "^8.0.0",
+    "@capacitor/android": "^8.0.0",
+    "@capacitor/status-bar": "^8.0.0",
+    "@ionic/react": "^8.7.17",
+    "@vitejs/plugin-react": "^5.1.2",
+    "vite-plugin-static-copy": "^3.2.0",
+    "@types/react-router-dom": "^5.3.3"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
   }
 }

@@ -33,9 +33,9 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
       'android.permission.ACCESS_COARSE_LOCATION',
       'android.permission.ACCESS_FINE_LOCATION'
     ],
-    edgeToEdgeEnabled: true
   },
   plugins: [
+    '@regulaforensics/idv',
     ['expo-custom-assets', { assetsPaths: ['./assets'] }],
     ['expo-build-properties', {
       android: {

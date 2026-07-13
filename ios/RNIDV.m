@@ -4,7 +4,7 @@
 @interface RCT_EXTERN_MODULE(RNIDV, RCTEventEmitter)
 
 RCT_EXTERN_METHOD(exec: (NSString*)method
-                  args:(NSArray*)args
+                  newArgs:(NSArray*)newArgs
                   resolve:(RCTPromiseResolveBlock)resolve
                   reject:(RCTPromiseRejectBlock)reject)
 
