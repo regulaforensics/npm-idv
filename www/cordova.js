@@ -94,6 +94,56 @@ class CredentialsConnectionConfig {
 
 /***/ },
 
+/***/ "./src/config/login_config.js"
+/*!************************************!*\
+  !*** ./src/config/login_config.js ***!
+  \************************************/
+(__unused_webpack_module, __webpack_exports__, __webpack_require__) {
+
+__webpack_require__.r(__webpack_exports__);
+/* harmony export */ __webpack_require__.d(__webpack_exports__, {
+/* harmony export */   LoginConfig: () => (/* binding */ LoginConfig)
+/* harmony export */ });
+class LoginConfig {
+    applicationId
+    baseUrl
+    locale
+    metadata
+    httpTimeoutMs
+
+    constructor(params) {
+        this.applicationId = params?.applicationId
+        this.baseUrl = params?.baseUrl
+        this.locale = params?.locale
+        this.metadata = params?.metadata
+        this.httpTimeoutMs = params?.httpTimeoutMs
+    }
+
+    static fromJson(jsonObject) {
+        if (jsonObject == null) return null
+        const result = new LoginConfig()
+        result.applicationId = jsonObject["applicationId"]
+        result.baseUrl = jsonObject["baseUrl"]
+        result.locale = jsonObject["locale"]
+        result.metadata = jsonObject["metadata"]
+        result.httpTimeoutMs = jsonObject["httpTimeoutMs"]
+        return result
+    }
+
+    toJson() {
+        return {
+            "applicationId": this.applicationId,
+            "baseUrl": this.baseUrl,
+            "locale": this.locale,
+            "metadata": this.metadata,
+            "httpTimeoutMs": this.httpTimeoutMs,
+        }
+    }
+}
+
+
+/***/ },
+
 /***/ "./src/config/prepare_workflow_config.js"
 /*!***********************************************!*\
   !*** ./src/config/prepare_workflow_config.js ***!
@@ -577,15 +627,16 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   CredentialsConnectionConfig: () => (/* reexport safe */ _config_credentials_connection_config__WEBPACK_IMPORTED_MODULE_2__.CredentialsConnectionConfig),
 /* harmony export */   IDV: () => (/* binding */ IDV),
 /* harmony export */   IdvLogLevel: () => (/* binding */ IdvLogLevel),
+/* harmony export */   LoginConfig: () => (/* reexport safe */ _config_login_config__WEBPACK_IMPORTED_MODULE_8__.LoginConfig),
 /* harmony export */   PrepareWorkflowConfig: () => (/* reexport safe */ _config_prepare_workflow_config__WEBPACK_IMPORTED_MODULE_4__.PrepareWorkflowConfig),
 /* harmony export */   SendDataConfig: () => (/* reexport safe */ _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__.SendDataConfig),
 /* harmony export */   SessionRestoreMode: () => (/* binding */ SessionRestoreMode),
 /* harmony export */   StartSessionConfig: () => (/* reexport safe */ _config_start_session_config__WEBPACK_IMPORTED_MODULE_6__.StartSessionConfig),
 /* harmony export */   StartWorkflowConfig: () => (/* reexport safe */ _config_start_workflow_config__WEBPACK_IMPORTED_MODULE_5__.StartWorkflowConfig),
 /* harmony export */   TokenConnectionConfig: () => (/* reexport safe */ _config_token_connection_config__WEBPACK_IMPORTED_MODULE_1__.TokenConnectionConfig),
-/* harmony export */   Workflow: () => (/* reexport safe */ _model_workflow__WEBPACK_IMPORTED_MODULE_8__.Workflow),
-/* harmony export */   WorkflowResult: () => (/* reexport safe */ _model_workflow_result__WEBPACK_IMPORTED_MODULE_9__.WorkflowResult),
-/* harmony export */   WorkflowStep: () => (/* reexport safe */ _model_workflow_step__WEBPACK_IMPORTED_MODULE_10__.WorkflowStep)
+/* harmony export */   Workflow: () => (/* reexport safe */ _model_workflow__WEBPACK_IMPORTED_MODULE_9__.Workflow),
+/* harmony export */   WorkflowResult: () => (/* reexport safe */ _model_workflow_result__WEBPACK_IMPORTED_MODULE_10__.WorkflowResult),
+/* harmony export */   WorkflowStep: () => (/* reexport safe */ _model_workflow_step__WEBPACK_IMPORTED_MODULE_11__.WorkflowStep)
 /* harmony export */ });
 /* harmony import */ var _internal_bridge__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./internal/bridge */ "./src/internal/bridge.js");
 /* harmony import */ var _config_token_connection_config__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./config/token_connection_config */ "./src/config/token_connection_config.js");
@@ -595,9 +646,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _config_start_workflow_config__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./config/start_workflow_config */ "./src/config/start_workflow_config.js");
 /* harmony import */ var _config_start_session_config__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./config/start_session_config */ "./src/config/start_session_config.js");
 /* harmony import */ var _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./config/send_data_config */ "./src/config/send_data_config.js");
-/* harmony import */ var _model_workflow__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./model/workflow */ "./src/model/workflow.js");
-/* harmony import */ var _model_workflow_result__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./model/workflow_result */ "./src/model/workflow_result.js");
-/* harmony import */ var _model_workflow_step__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./model/workflow_step */ "./src/model/workflow_step.js");
+/* harmony import */ var _config_login_config__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./config/login_config */ "./src/config/login_config.js");
+/* harmony import */ var _model_workflow__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./model/workflow */ "./src/model/workflow.js");
+/* harmony import */ var _model_workflow_result__WEBPACK_IMPORTED_MODULE_10__ = __webpack_require__(/*! ./model/workflow_result */ "./src/model/workflow_result.js");
+/* harmony import */ var _model_workflow_step__WEBPACK_IMPORTED_MODULE_11__ = __webpack_require__(/*! ./model/workflow_step */ "./src/model/workflow_step.js");
+
 
 
 
@@ -665,12 +718,12 @@ class IDV {
 
     async prepareWorkflow(config) {
         const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('prepareWorkflow', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_prepare_workflow_config__WEBPACK_IMPORTED_MODULE_4__.PrepareWorkflowConfig)])
-        return completionFromResponse(response, json => _model_workflow__WEBPACK_IMPORTED_MODULE_8__.Workflow.fromJson(json))
+        return completionFromResponse(response, json => _model_workflow__WEBPACK_IMPORTED_MODULE_9__.Workflow.fromJson(json))
     }
 
     async startWorkflow(config) {
         const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('startWorkflow', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_start_workflow_config__WEBPACK_IMPORTED_MODULE_5__.StartWorkflowConfig)])
-        return completionFromResponse(response, json => _model_workflow_result__WEBPACK_IMPORTED_MODULE_9__.WorkflowResult.fromJson(json))
+        return completionFromResponse(response, json => _model_workflow_result__WEBPACK_IMPORTED_MODULE_10__.WorkflowResult.fromJson(json))
     }
 
     async getWorkflows() {
@@ -678,7 +731,7 @@ class IDV {
         return completionFromResponse(response, json => {
             const result = []
             if (json != null) for (const item of json) {
-                const workflow = _model_workflow__WEBPACK_IMPORTED_MODULE_8__.Workflow.fromJson(item)
+                const workflow = _model_workflow__WEBPACK_IMPORTED_MODULE_9__.Workflow.fromJson(item)
                 if (workflow != null) result.push(workflow)
             }
             return result
@@ -692,6 +745,11 @@ class IDV {
 
     async sendData(config) {
         const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('sendData', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_send_data_config__WEBPACK_IMPORTED_MODULE_7__.SendDataConfig)])
+        return completionFromResponse(response)
+    }
+
+    async startLogin(config) {
+        const response = await (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('startLogin', [(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.serializeInterface)(config, _config_login_config__WEBPACK_IMPORTED_MODULE_8__.LoginConfig)])
         return completionFromResponse(response)
     }
 }

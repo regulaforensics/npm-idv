@@ -35,6 +35,7 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
     ],
   },
   plugins: [
+    '@regulaforensics/idv',
     ['expo-custom-assets', { assetsPaths: ['./assets'] }],
     ['expo-build-properties', {
       android: {
