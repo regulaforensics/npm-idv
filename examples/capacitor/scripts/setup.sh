@@ -12,3 +12,5 @@ cp public/assets/regula.license ios/App/App/
 cp public/assets/db.dat ios/App/App/
 cp public/assets/regula.license android/app/src/main/assets/Regula/
 cp public/assets/db.dat android/app/src/main/assets/Regula/
+
+exit 0

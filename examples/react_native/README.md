@@ -12,4 +12,4 @@
 7. After initialization choose **General KYC - AP** from workflows list and click **Start Workflow** button.
 8. Complete workflow and get your session id.
 
-**Note**: `npm run ios`/`npm run android` is just one way of running the app. You can also pass `-o` or `--open` argument to the command, and this will open Xcode/Android Studio, then run the app directly from the IDE. Overall, this is a more consistent way, so if you're having troubles running the app from terminal, try running it from the IDE. Just don't forget to make sure that Metro Bundler is running(`npm start`).
+**Note**: `npm run ios`/`npm run android` is just one way of running the app. You can also pass `-- -o` or `-- --open` argument to the command, and this will open Xcode/Android Studio, then run the app directly from the IDE. Overall, this is a more consistent way, so if you're having troubles running the app from terminal, try running it from the IDE. Just don't forget to make sure that Metro Bundler is running(`npm start`).

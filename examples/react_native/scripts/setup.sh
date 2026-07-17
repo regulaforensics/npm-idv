@@ -10,3 +10,5 @@ mv android/app/src/main/res/raw/db.dat android/app/src/main/assets/Regula/
 
 sed -i '' '$a\
 android { buildFeatures { dataBinding true } }' android/app/build.gradle
+
+exit 0
