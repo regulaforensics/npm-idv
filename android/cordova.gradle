@@ -14,7 +14,7 @@ repositories {
 }
 
 dependencies {
-    implementation('com.regula.idv:api:3.9.349') {
+    implementation('com.regula.idv:api:3.9.352') {
         transitive = true
     }
 }
