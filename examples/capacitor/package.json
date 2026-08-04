@@ -6,11 +6,11 @@
     "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.9.154-rc",
-    "@regulaforensics/idv-module-document-reader": "3.9.154-rc",
-    "@regulaforensics/idv-module-face": "3.9.155-rc",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2686-rc",
-    "@regulaforensics/face-core-basic": "8.3.672-rc",
+    "@regulaforensics/idv": "3.9.157-rc",
+    "@regulaforensics/idv-module-document-reader": "3.9.160-rc",
+    "@regulaforensics/idv-module-face": "3.9.161-rc",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2713-rc",
+    "@regulaforensics/face-core-basic": "8.3.678-rc",
     "@capacitor/cli": "^8.0.0",
     "@capacitor/core": "^8.0.0",
     "@capacitor/app": "^8.0.0",
