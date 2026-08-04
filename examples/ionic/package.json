@@ -7,11 +7,11 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.9.156-nightly",
-    "@regulaforensics/idv-module-document-reader": "3.9.158-nightly",
-    "@regulaforensics/idv-module-face": "3.9.159-nightly",
+    "@regulaforensics/idv": "3.9.158-nightly",
+    "@regulaforensics/idv-module-document-reader": "3.9.162-nightly",
+    "@regulaforensics/idv-module-face": "3.9.163-nightly",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2670-nightly",
-    "@regulaforensics/face-core-basic": "8.3.675-nightly",
+    "@regulaforensics/face-core-basic": "8.3.680-nightly",
     "@angular-devkit/build-angular": "^22.0.5",
     "@angular/cli": "^22.0.5",
     "@angular/common": "^22.0.5",
