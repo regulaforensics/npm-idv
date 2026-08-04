@@ -680,11 +680,11 @@ class IDV {
     }
 
     set sessionRestoreMode(val) {
-        (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('setSessionRestoreMode', [val])
+        ;(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('setSessionRestoreMode', [val])
     }
 
     set logLevel(val) {
-        (0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('setLogLevel', [val])
+        ;(0,_internal_bridge__WEBPACK_IMPORTED_MODULE_0__.exec)('setLogLevel', [val])
     }
 
     async getCurrentSessionId() {
