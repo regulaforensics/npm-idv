@@ -8,9 +8,9 @@
     "start": "expo start"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.9.157-rc",
-    "@regulaforensics/idv-module-document-reader": "3.9.160-rc",
-    "@regulaforensics/idv-module-face": "3.9.161-rc",
+    "@regulaforensics/idv": "3.9.160-rc",
+    "@regulaforensics/idv-module-document-reader": "3.9.166-rc",
+    "@regulaforensics/idv-module-face": "3.9.167-rc",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2713-rc",
     "@regulaforensics/face-core-basic": "8.3.678-rc",
     "expo": "^56.0.8",
