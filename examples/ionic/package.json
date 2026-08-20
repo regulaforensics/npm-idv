@@ -7,7 +7,7 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.180-beta",
+    "@regulaforensics/idv": "3.10.183-beta",
     "@regulaforensics/idv-module-document-reader": "3.9.164",
     "@regulaforensics/idv-module-face": "3.9.165",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2727",
