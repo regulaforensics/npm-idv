@@ -7,11 +7,12 @@ import { PrepareWorkflowConfig } from './config/prepare_workflow_config'
 import { StartWorkflowConfig } from './config/start_workflow_config'
 import { StartSessionConfig } from './config/start_session_config'
 import { SendDataConfig } from './config/send_data_config'
+import { LoginConfig } from './config/login_config'
 import { Workflow } from './model/workflow'
 import { WorkflowResult } from './model/workflow_result'
 import { WorkflowStep } from './model/workflow_step'
 
-export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, Workflow, WorkflowResult, WorkflowStep }
+export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, LoginConfig, Workflow, WorkflowResult, WorkflowStep }
 
 export class IDV {
     static get instance() { return IDV._instance }
@@ -23,10 +24,15 @@ export class IDV {
         setDidEndSessionCompletion(value.didEndSession)
         setDidStartRestoreSessionCompletion(value.didStartRestoreSession)
         setDidContinueRemoteSessionCompletion(value.didContinueRemoteSession)
+        setDidReceiveLogEventCompletion(value.didReceiveLogEvent)
     }
 
     set sessionRestoreMode(val) {
         exec('setSessionRestoreMode', [val])
+    }
+
+    set logLevel(val) {
+        exec('setLogLevel', [val])
     }
 
     async getCurrentSessionId() {
@@ -89,11 +95,23 @@ export class IDV {
         const response = await exec('sendData', [serializeInterface(config, SendDataConfig)])
         return completionFromResponse(response)
     }
+
+    async startLogin(config) {
+        const response = await exec('startLogin', [serializeInterface(config, LoginConfig)])
+        return completionFromResponse(response)
+    }
 }
 
 export const SessionRestoreMode = {
     ENABLED: 0,
     DISABLED: 1,
+}
+
+export const IdvLogLevel = {
+    DEBUG: 0,
+    INFO: 1,
+    WARNING: 2,
+    ERROR: 3,
 }
 
 function completionFromResponse(response, transform) {

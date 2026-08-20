@@ -6,13 +6,11 @@
     "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.4.86-beta",
-    "@regulaforensics/document-reader": "9.2.621",
-    "@regulaforensics/face-sdk": "8.1.816",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.2.1513",
-    "@regulaforensics/face-core-basic": "8.1.422",
-    "@regulaforensics/idv-module-document-reader": "3.4.56-beta",
-    "@regulaforensics/idv-module-face": "3.4.57-beta",
+    "@regulaforensics/idv": "3.10.180-beta",
+    "@regulaforensics/idv-module-document-reader": "3.9.164",
+    "@regulaforensics/idv-module-face": "3.9.165",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2727",
+    "@regulaforensics/face-core-basic": "8.3.683",
     "@capacitor/cli": "^8.0.0",
     "@capacitor/core": "^8.0.0",
     "@capacitor/app": "^8.0.0",
@@ -23,5 +21,8 @@
     "@vitejs/plugin-react": "^5.1.2",
     "vite-plugin-static-copy": "^3.2.0",
     "@types/react-router-dom": "^5.3.3"
+  },
+  "overrides": {
+    "esbuild": "^0.28.1"
   }
 }

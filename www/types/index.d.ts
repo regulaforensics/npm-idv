@@ -5,11 +5,12 @@ import { PrepareWorkflowConfig } from './config/prepare_workflow_config'
 import { StartWorkflowConfig } from './config/start_workflow_config'
 import { StartSessionConfig } from './config/start_session_config'
 import { SendDataConfig } from './config/send_data_config'
+import { LoginConfig } from './config/login_config'
 import { Workflow } from './model/workflow'
 import { WorkflowResult } from './model/workflow_result'
 import { WorkflowStep } from './model/workflow_step'
 
-export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, Workflow, WorkflowResult, WorkflowStep }
+export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, LoginConfig, Workflow, WorkflowResult, WorkflowStep }
 
 /**
  * Entry point of the Regula IDV.
@@ -24,6 +25,9 @@ export class IDV {
     setListener(options?: IDVListenerOptions): void
 
     set sessionRestoreMode(value: SessionRestoreMode)
+
+    /** Default: empty set. */
+    set logLevel(value: Set<IdvLogLevel>)
 
     getCurrentSessionId(): Promise<string | null>
 
@@ -46,6 +50,8 @@ export class IDV {
     startSession(config: StartSessionConfig): Promise<[string | null, string | null]>
 
     sendData(config: SendDataConfig): Promise<[boolean, string | null]>
+
+    startLogin(config: LoginConfig): Promise<[boolean, string | null]>
 }
 
 export enum SessionRestoreMode {
@@ -58,4 +64,14 @@ export interface IDVListenerOptions {
     didEndSession?: () => void
     didStartRestoreSession?: () => void
     didContinueRemoteSession?: () => void
+    didReceiveLogEvent?: IdvLogEventCompletion
+}
+
+export type IdvLogEventCompletion = (level: IdvLogLevel, message: string) => void;
+
+export enum IdvLogLevel {
+    DEBUG = 0,
+    INFO = 1,
+    WARNING = 2,
+    ERROR = 3,
 }

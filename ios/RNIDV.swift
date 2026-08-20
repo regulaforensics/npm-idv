@@ -8,7 +8,8 @@ public class RNIDV: RCTEventEmitter {
         return [didStartSessionEvent,
                 didEndSessionEvent,
                 didStartRestoreSessionEvent,
-                didContinueRemoteSessionEvent];
+                didContinueRemoteSessionEvent,
+                didReceiveLogEventEvent];
     }
     
     @objc
