@@ -7,11 +7,11 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.186-nightly",
-    "@regulaforensics/idv-module-document-reader": "3.10.204-nightly",
-    "@regulaforensics/idv-module-face": "3.10.205-nightly",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.8.2760-nightly",
-    "@regulaforensics/face-core-basic": "8.4.704-nightly",
+    "@regulaforensics/idv": "3.10.188-nightly",
+    "@regulaforensics/idv-module-document-reader": "3.10.210-nightly",
+    "@regulaforensics/idv-module-face": "3.10.211-nightly",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.8.2765-nightly",
+    "@regulaforensics/face-core-basic": "8.4.707-nightly",
     "@angular-devkit/build-angular": "^22.0.5",
     "@angular/cli": "^22.0.5",
     "@angular/common": "^22.0.5",
@@ -35,6 +35,8 @@
     "picomatch": "^4.0.4",
     "serialize-javascript": "^7.0.4",
     "uuid": "^14.0.0",
+    "postcss": "^8.5.22",
+    "image-size": "npm:image-size-next@2.1.1",
     "webpack-dev-server": "^5.2.4"
   },
   "cordova": {
