@@ -8,7 +8,7 @@
     "start": "expo start"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.190-beta",
+    "@regulaforensics/idv": "3.10.197-beta",
     "@regulaforensics/idv-module-document-reader": "3.9.164",
     "@regulaforensics/idv-module-face": "3.9.165",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.7.2727",
@@ -22,12 +22,13 @@
     "react": "^19.2.7",
     "@types/react": "^19.2.16",
     "react-native-webview": "^13.16.1",
-    "typescript": "6.0.3"
+    "typescript": "6.0.3",
+    "image-size": "file:vendor/image-size-metro-compat"
   },
   "overrides": {
     "postcss": "^8.5.10",
     "uuid": "^14.0.0",
-    "image-size": "npm:image-size-next@2.1.1",
+    "image-size": "$image-size",
     "js-yaml": "^4.1.1"
   }
 }
