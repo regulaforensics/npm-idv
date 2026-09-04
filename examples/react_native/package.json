@@ -8,11 +8,11 @@
     "start": "expo start"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.198-nightly",
+    "@regulaforensics/idv": "3.10.199-nightly",
     "@regulaforensics/idv-module-document-reader": "3.10.240-nightly",
-    "@regulaforensics/idv-module-face": "3.10.241-nightly",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.8.2940-nightly",
-    "@regulaforensics/face-core-basic": "8.4.805-nightly",
+    "@regulaforensics/idv-module-face": "3.10.243-nightly",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.8.2958-nightly",
+    "@regulaforensics/face-core-basic": "8.4.810-nightly",
     "expo": "^56.0.8",
     "expo-dev-client": "^56.0.18",
     "expo-build-properties": "^56.0.16",
