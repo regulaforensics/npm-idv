@@ -1,5 +1,8 @@
 # Regula IDV plugin
+
 IDV is a framework that unifies access to all Regula products. This plugin makes possible to use it with react-native, cordova and capacitor applications.
+
+Requires iOS 15+ & Android 7.0+ (API 24)
 
 ## Android Integration
 

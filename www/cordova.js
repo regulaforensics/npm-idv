@@ -357,7 +357,8 @@ async function exec(name, params) {
 }
 
 function serializeInterface(value, ctor) {
-    if (value == null) return null
+    if (value === undefined) return undefined
+    if (value === null) return null
     if (value instanceof ctor) return value.toJson()
     return (new ctor(value)).toJson()
 }
@@ -407,11 +408,11 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   NativeEventEmitter: () => (/* binding */ NativeEventEmitter),
 /* harmony export */   NativeModules: () => (/* binding */ NativeModules)
 /* harmony export */ });
-var _exec = (completion, params) => cordova.exec(completion, null, "IDV", "exec", params)
+var _exec = (completion, params, errorCallback = null) => cordova.exec(completion, errorCallback, "IDV", "exec", params)
 
 const NativeModules = {
     RNIDV: {
-        exec: async (name, params) => new Promise((resolve, _) => _exec(data => resolve(data), [name, ...params]))
+        exec: async (name, params) => new Promise((resolve, reject) => _exec(resolve, [name, ...params], error => reject(new Error(error))))
     }
 }
 

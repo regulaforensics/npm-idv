@@ -1,5 +1,7 @@
 # Regula IDV Ionic demo application
 
+Requires Node.js 22+, Xcode 26+, Android Studio with JDK 17 and Android SDK 36.
+
 ## How to build demo application
 1. Download or the clone current repository using the command `git clone https://github.com/regulaforensics/npm-idv.git`.
 2. Put `regula.license` file at `assets/` (you can get a trial license [here](https://client.regulaforensics.com)).

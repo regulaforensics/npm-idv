@@ -1,5 +1,7 @@
 # Regula IDV Capacitor demo application
 
+Requires Node.js 22+, Xcode 26+, Android Studio with JDK 21+ and Android SDK 37.
+
 ## How to build demo application
 1. Download or the clone current repository using the command `git clone https://github.com/regulaforensics/npm-idv.git`.
 2. Put `regula.license` file at `public/assets/` (you can get a trial license [here](https://client.regulaforensics.com)).

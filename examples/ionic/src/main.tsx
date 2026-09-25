@@ -3,7 +3,7 @@ import { IDV, Workflow } from '@regulaforensics/idv'
 enum Configuration { credentials, token, apiKey }
 
 const loginType: Configuration = Configuration.credentials
-const baseUrl = "https://idv.regula.app"
+const baseUrl = "https://app.idv-platform.com"
 const username = "username_placeholder"
 const password = "password_placeholder"
 const tokenUrl = "token_placeholder"
