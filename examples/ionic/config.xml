@@ -21,7 +21,7 @@
     <platform name="ios">
         <resource-file src="assets/regula.license" />
         <resource-file src="assets/db.dat" />
-        <preference name="deployment-target" value="14.0" />
+        <preference name="deployment-target" value="15.0" />
         <preference name="orientation" value="portrait" />
         <allow-intent href="itms:*" />
         <allow-intent href="itms-apps:*" />

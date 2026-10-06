@@ -9,8 +9,19 @@ import { LoginConfig } from './config/login_config'
 import { Workflow } from './model/workflow'
 import { WorkflowResult } from './model/workflow_result'
 import { WorkflowStep } from './model/workflow_step'
-
-export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, LoginConfig, Workflow, WorkflowResult, WorkflowStep }
+export {
+    TokenConnectionConfig,
+    CredentialsConnectionConfig,
+    ApiKeyConnectionConfig,
+    PrepareWorkflowConfig,
+    StartWorkflowConfig,
+    StartSessionConfig,
+    SendDataConfig,
+    LoginConfig,
+    Workflow,
+    WorkflowResult,
+    WorkflowStep,
+}
 
 /**
  * Entry point of the Regula IDV.

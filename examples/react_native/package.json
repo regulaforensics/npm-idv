@@ -5,29 +5,32 @@
     "setup": "scripts/setup.sh",
     "ios": "scripts/ios.sh",
     "android": "scripts/android.sh",
-    "start": "expo start"
+    "start": "expo start --port \"$npm_package_config_metroPort\""
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.225-rc",
-    "@regulaforensics/idv-module-document-reader": "3.10.284-rc",
-    "@regulaforensics/idv-module-face": "3.10.285-rc",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.9.3150-rc",
-    "@regulaforensics/face-core-basic": "8.4.848-rc",
-    "expo": "^56.0.8",
-    "expo-dev-client": "^56.0.18",
-    "expo-build-properties": "^56.0.16",
+    "@regulaforensics/idv": "3.10.239-rc",
+    "@regulaforensics/idv-module-document-reader": "3.10.288-rc",
+    "@regulaforensics/idv-module-face": "3.10.289-rc",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.9.3273-rc",
+    "@regulaforensics/face-core-basic": "8.4.877-rc",
+    "expo": "58.0.0-preview.3",
+    "expo-dev-client": "58.0.3",
+    "expo-build-properties": "58.0.3",
     "expo-custom-assets": "^1.5.0",
-    "react-native": "^0.85.3",
-    "@react-native/metro-config": "^0.85.3",
-    "react": "^19.2.7",
-    "@types/react": "^19.2.16",
-    "react-native-webview": "^13.16.1",
-    "typescript": "6.0.3"
+    "react-native": "0.88.0-rc.0",
+    "react": "19.2.3",
+    "@types/react": "19.2.18",
+    "react-native-webview": "^14.0.1",
+    "typescript": "^7.0.2",
+    "@expo/config-plugins": "58.0.0"
   },
   "overrides": {
-    "postcss": "^8.5.10",
     "uuid": "^14.0.0",
-    "image-size": "npm:image-size-next@2.1.1",
-    "js-yaml": "^4.1.1"
+    "expo-custom-assets": {
+      "expo": "$expo"
+    }
+  },
+  "config": {
+    "metroPort": 8083
   }
 }
