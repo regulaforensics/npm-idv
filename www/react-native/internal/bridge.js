@@ -8,7 +8,8 @@ export async function exec(name, params) {
 }
 
 export function serializeInterface(value, ctor) {
-    if (value == null) return null
+    if (value === undefined) return undefined
+    if (value === null) return null
     if (value instanceof ctor) return value.toJson()
     return (new ctor(value)).toJson()
 }

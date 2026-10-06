@@ -1,6 +1,30 @@
 import { compare } from './utils'
-import { CredentialsConnectionConfig, TokenConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, Workflow, WorkflowStep, WorkflowResult, StartSessionConfig, SendDataConfig, LoginConfig } from '@regulaforensics/idv/www/capacitor'
-import { apiKeyConnectionConfig, credentialsConnectionConfig, prepareWorkflowConfig, startWorkflowConfig, tokenConnectionConfig, workflow, workflowStep, workflowResult, startSessionConfig, sendDataConfig, loginConfig } from './json'
+import {
+    CredentialsConnectionConfig,
+    TokenConnectionConfig,
+    ApiKeyConnectionConfig,
+    PrepareWorkflowConfig,
+    StartWorkflowConfig,
+    Workflow,
+    WorkflowStep,
+    WorkflowResult,
+    StartSessionConfig,
+    SendDataConfig,
+    LoginConfig,
+} from '@regulaforensics/idv/www/capacitor'
+import {
+    apiKeyConnectionConfig,
+    credentialsConnectionConfig,
+    prepareWorkflowConfig,
+    startWorkflowConfig,
+    tokenConnectionConfig,
+    workflow,
+    workflowStep,
+    workflowResult,
+    startSessionConfig,
+    sendDataConfig,
+    loginConfig,
+} from './json'
 
 compare('credentialsConnectionConfig', credentialsConnectionConfig, CredentialsConnectionConfig.fromJson)
 compare('tokenConnectionConfig', tokenConnectionConfig, TokenConnectionConfig.fromJson)
