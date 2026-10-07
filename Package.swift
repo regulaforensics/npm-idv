@@ -10,7 +10,7 @@ let package = Package(
         .package(url: "https://github.com/apache/cordova-ios.git", branch: "master"),
         .package(
             url: "https://github.com/regulaforensics/IDVSDK-Swift-Package",
-            exact: "3.9.1987"
+            exact: "3.10.2104-rc"
         )
     ],
     targets: [
