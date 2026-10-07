@@ -8,11 +8,11 @@
     "start": "expo start --port \"$npm_package_config_metroPort\""
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.242-nightly",
+    "@regulaforensics/idv": "3.10.247-nightly",
     "@regulaforensics/idv-module-document-reader": "3.10.347-nightly",
     "@regulaforensics/idv-module-face": "3.10.351-nightly",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.9.3302-nightly",
-    "@regulaforensics/face-core-basic": "8.4.881-nightly",
+    "@regulaforensics/face-core-basic": "8.4.884-nightly",
     "expo": "58.0.0-preview.3",
     "expo-dev-client": "58.0.3",
     "expo-build-properties": "58.0.3",
