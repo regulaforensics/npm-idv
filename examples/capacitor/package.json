@@ -6,7 +6,7 @@
     "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.262-beta",
+    "@regulaforensics/idv": "3.10.263-beta",
     "@regulaforensics/idv-module-document-reader": "3.10.377-rc",
     "@regulaforensics/idv-module-face": "3.10.378-rc",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.9.3305",
