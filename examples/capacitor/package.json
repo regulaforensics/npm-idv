@@ -6,9 +6,9 @@
     "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.261-beta",
-    "@regulaforensics/idv-module-document-reader": "3.9.164",
-    "@regulaforensics/idv-module-face": "3.9.165",
+    "@regulaforensics/idv": "3.10.262-beta",
+    "@regulaforensics/idv-module-document-reader": "3.10.377-rc",
+    "@regulaforensics/idv-module-face": "3.10.378-rc",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.9.3305",
     "@regulaforensics/face-core-basic": "8.4.884",
     "@capacitor/cli": "^8.5.2",
@@ -20,7 +20,8 @@
   "overrides": {
     "xcode": {
       "uuid": "^11.1.1"
-    }
+    },
+    "source-map-js": "^1.2.2"
   },
   "type": "module"
 }
