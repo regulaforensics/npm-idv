@@ -4,33 +4,28 @@
   "scripts": {
     "setup": "scripts/setup.sh",
     "ios": "scripts/ios.sh",
-    "android": "scripts/android.sh",
-    "start": "expo start --port \"$npm_package_config_metroPort\""
+    "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.259-nightly",
-    "@regulaforensics/idv-module-document-reader": "3.10.382-nightly",
-    "@regulaforensics/idv-module-face": "3.10.383-nightly",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.10.3410-nightly",
-    "@regulaforensics/face-core-basic": "8.5.902-nightly",
-    "expo": "58.0.0-preview.3",
-    "expo-dev-client": "58.0.3",
-    "expo-build-properties": "58.0.3",
+    "@regulaforensics/idv": "3.10.265-nightly",
+    "@regulaforensics/idv-module-document-reader": "3.10.386-nightly",
+    "@regulaforensics/idv-module-face": "3.10.387-nightly",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.10.3411-nightly",
+    "@regulaforensics/face-core-basic": "8.5.907-nightly",
+    "expo": "~58.0.10",
+    "expo-build-properties": "~58.0.10",
     "expo-custom-assets": "^1.5.0",
-    "react-native": "0.88.0-rc.0",
-    "react": "19.2.3",
-    "@types/react": "19.2.18",
+    "react-native": "0.88.0",
+    "react": "19.3.1",
+    "@types/react": "19.3.0",
     "react-native-webview": "^14.0.1",
     "typescript": "^7.0.2",
-    "@expo/config-plugins": "58.0.0"
+    "@expo/config-plugins": "~58.0.9",
+    "react-native-fs": "^2.20.0"
   },
   "overrides": {
-    "uuid": "^14.0.0",
-    "expo-custom-assets": {
-      "expo": "$expo"
+    "xcode": {
+      "uuid": "^11.1.1"
     }
-  },
-  "config": {
-    "metroPort": 8083
   }
 }

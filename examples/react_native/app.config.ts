@@ -36,17 +36,19 @@ export default ({ config }: ConfigContext): ExpoConfig => ({
   },
   plugins: [
     '@regulaforensics/idv',
+    './scripts/withoutMetroServer',
     ['expo-custom-assets', { assetsPaths: ['./assets'] }],
     ['expo-build-properties', {
+      ios: { networkInspector: false },
       android: {
+        networkInspector: false,
         extraMavenRepos: [
           { url: 'https://maven.regulaforensics.com/RegulaDocumentReader' },
           { url: 'https://maven.regulaforensics.com/RegulaDocumentReader/Beta' },
           { url: 'https://maven.regulaforensics.com/RegulaDocumentReader/Nightly' },
           { url: 'https://maven.regulaforensics.com/RegulaDocumentReader/Stage' }
         ]
-      },
-      ios: { networkInspector: false }
+      }
     }]
   ]
 })
