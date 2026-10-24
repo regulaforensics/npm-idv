@@ -3,7 +3,7 @@ set -e
 
 npm install
 npx expo prebuild --no-install
-(cd ios && (pod install || pod update))
+(cd ios && (pod install || (pod repo update && pod install)))
 
 mkdir -p android/app/src/main/assets/Regula
 mv android/app/src/main/res/raw/regula.license android/app/src/main/assets/Regula/
