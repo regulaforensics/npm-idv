@@ -1,4 +1,11 @@
-import { exec, serializeInterface, setDidStartSessionCompletion, setDidEndSessionCompletion, setDidStartRestoreSessionCompletion, setDidContinueRemoteSessionCompletion } from './internal/bridge'
+import {
+    exec,
+    serializeInterface,
+    setDidStartSessionCompletion,
+    setDidEndSessionCompletion,
+    setDidStartRestoreSessionCompletion,
+    setDidContinueRemoteSessionCompletion,
+} from './internal/bridge'
 
 import { TokenConnectionConfig } from './config/token_connection_config'
 import { CredentialsConnectionConfig } from './config/credentials_connection_config'
@@ -11,8 +18,19 @@ import { LoginConfig } from './config/login_config'
 import { Workflow } from './model/workflow'
 import { WorkflowResult } from './model/workflow_result'
 import { WorkflowStep } from './model/workflow_step'
-
-export { TokenConnectionConfig, CredentialsConnectionConfig, ApiKeyConnectionConfig, PrepareWorkflowConfig, StartWorkflowConfig, StartSessionConfig, SendDataConfig, LoginConfig, Workflow, WorkflowResult, WorkflowStep }
+export {
+    TokenConnectionConfig,
+    CredentialsConnectionConfig,
+    ApiKeyConnectionConfig,
+    PrepareWorkflowConfig,
+    StartWorkflowConfig,
+    StartSessionConfig,
+    SendDataConfig,
+    LoginConfig,
+    Workflow,
+    WorkflowResult,
+    WorkflowStep,
+}
 
 export class IDV {
     static get instance() { return IDV._instance }

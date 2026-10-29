@@ -1,12 +1,6 @@
 #!/usr/bin/env bash
 set -e
 
-if [[ " $* " == *" --open "* ]] || [[ " $* " == *" -o "* ]]; then
-    open ios/IDV.xcworkspace
-    # check if metro is already running
-    [[ -z $(pgrep -f 'expo start') ]] && npm start
-else
-    npx expo run:ios  --device
-fi
-
-exit 0
+[[ " $* " == *" --open "* || " $* " == *" -o "* ]] &&
+    open ios/IDV.xcworkspace ||
+    npx expo run:ios --device --no-bundler "$@"

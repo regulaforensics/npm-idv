@@ -3,35 +3,71 @@ import { IDV, Workflow } from '@regulaforensics/idv'
 enum Configuration { credentials, token, apiKey }
 
 const loginType: Configuration = Configuration.credentials
-const baseUrl = "https://idv.regula.app"
+const baseUrl = "https://app.idv-platform.com"
 const username = "username_placeholder"
 const password = "password_placeholder"
 const tokenUrl = "token_placeholder"
 const apiKey = "api_key_placeholder"
 
-var idv = IDV.instance
 var selectedWorkflow = ""
-var workflowIds: string[] = []
+
+var idv = IDV.instance
+var workflowFilter: string[] = []
 
 async function init() {
+    setStatus("Initializing...")
     var [_, iError] = await idv.initialize()
     if (handleException(iError, "initialize")) return
 
-    var success = ({
+    var login = ({
         [Configuration.credentials]: async () => await configureWithCredentials(),
         [Configuration.token]: async () => await configureWithToken(),
         [Configuration.apiKey]: async () => await configureApiKey(),
     })[loginType]!
-    if (!await success()) return
+    if (!await login()) return
 
-    var [wfs, error] = await idv.getWorkflows()
-    if (handleException(error, "getWorkflows")) return
-    if (loginType == Configuration.token) {
-        wfs = wfs!.filter((wf: any) => workflowIds.includes(wf.id))
+    if (selectedWorkflow.length > 0) {
+        workflowFilter = [] // Reset the filter in case both workflow and filter are specified.
+        // Show a list of 1 element just to show the workflow name.
+        var workflow = await prepareSelectedWorkflow()
+        if (workflow != null) setWorkflows([workflow])
+        return
     }
+    if (workflowFilter.length > 0) {
+        showWorkflowList()
+        return
+    }
+    setStatus("No workflow selected!")
+    setDescription("Manually set `selectedWorkflow` to your workflow ID")
+}
 
-    setWorkflows(wfs!)
-    setStatus("Ready")
+async function showWorkflowList() {
+    setStatus("Fetching workflows...")
+    let [wfs, error] = await idv.getWorkflows()
+    if (handleException(error, "getWorkflows")) return
+    wfs = workflowFilter.flatMap(id => wfs!.filter(wf => wf.id === id))
+    if (wfs.length > 0) {
+        setWorkflows(wfs)
+        return
+    }
+    setStatus("Empty workflow list!")
+    setDescription("No workflows remain after filtration")
+}
+
+async function prepareSelectedWorkflow() {
+    setStatus("Preparing Workflow...")
+    const [workflow, prepareError] = await idv.prepareWorkflow({ workflowId: selectedWorkflow })
+    handleException(prepareError, "prepareWorkflow")
+    return workflow
+}
+
+async function startWorkflow(): Promise<void> {
+    // If workflow is chosen from the list then it's not prepared yet.
+    if (workflowFilter.length > 0 && await prepareSelectedWorkflow() == null) return
+    var [result, error] = await idv.startWorkflow()
+    if (handleException(error, "startWorkflow")) return
+    setStatus("Success")
+    setDescription(`SessionID: ${result?.sessionId}`)
 }
 
 async function configureWithCredentials(): Promise<boolean> {
@@ -45,9 +81,10 @@ async function configureWithCredentials(): Promise<boolean> {
 }
 
 async function configureWithToken(): Promise<boolean> {
-    var [wfIds, error] = await idv.configureWithToken({ url: tokenUrl })
+    var [workflowIds, error] = await idv.configureWithToken({ url: tokenUrl })
     if (handleException(error, "configureWithToken")) return false
-    workflowIds = wfIds!
+    // Filter the IDs to the ones allowed by the token.
+    workflowFilter = workflowFilter.filter(wf => workflowIds!.includes(wf))
     return true
 }
 
@@ -55,20 +92,6 @@ async function configureApiKey(): Promise<boolean> {
     var [success, error] = await idv.configureWithApiKey({ baseUrl, apiKey })
     handleException(error, "configureWithApiKey")
     return success
-}
-
-async function startWorkflow(): Promise<void> {
-    if (selectedWorkflow.length == 0) return
-    setStatus("Preparing Workflow...")
-
-    var [_, prepareError] = await idv.prepareWorkflow({ workflowId: selectedWorkflow })
-    if (handleException(prepareError, "prepareWorkflow")) return
-
-    var [result, error] = await idv.startWorkflow()
-    if (handleException(error, "startWorkflow")) return
-
-    setStatus("Success")
-    setDescription(`SessionID: ${result?.sessionId}`)
 }
 
 function handleException(error?: string | null, tag?: string): boolean {
@@ -97,9 +120,8 @@ var workflows: Workflow[] = []
 function setWorkflows(data: Workflow[]) {
     var radioGroup = document.getElementById("radio-group")!
     workflows = data
-    if (workflows.length != 0) {
-        selectedWorkflow = workflows[0].id
-    }
+    selectedWorkflow = workflows[0].id
+    setStatus("Ready")
 
     data.forEach(item => {
         var checked = selectedWorkflow == item.id ? "checked" : ""

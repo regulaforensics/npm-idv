@@ -1,8 +1,8 @@
-var _exec = (completion, params) => cordova.exec(completion, null, "IDV", "exec", params)
+var _exec = (completion, params, errorCallback = null) => cordova.exec(completion, errorCallback, "IDV", "exec", params)
 
 export const NativeModules = {
     RNIDV: {
-        exec: async (name, params) => new Promise((resolve, _) => _exec(data => resolve(data), [name, ...params]))
+        exec: async (name, params) => new Promise((resolve, reject) => _exec(resolve, [name, ...params], error => reject(new Error(error))))
     }
 }
 
