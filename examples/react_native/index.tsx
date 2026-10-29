@@ -1,6 +1,8 @@
 import { registerRootComponent } from 'expo'
 import WebView from 'react-native-webview'
 import React from 'react'
+import * as RNFS from 'react-native-fs'
+import { Platform } from 'react-native'
 import { main } from './src/main'
 
 var webViewRef: any
@@ -47,17 +49,45 @@ const document = {
 }
 
 function parseValue(value: any) {
-  if (value !== true && value !== false) return `"${value}"`
-  return value
+  const json = JSON.stringify(value)
+  return typeof value === 'string' ? `(window.webImages[${json}] ?? ${json})` : json
+}
+
+async function loadWebUI() {
+  const webRoot = Platform.OS === 'ios' ? RNFS.MainBundlePath + '/web/' : 'web/'
+  const readWebFile = Platform.OS === 'ios' ? RNFS.readFile : RNFS.readFileAssets
+  const readWebDir = Platform.OS === 'ios' ? RNFS.readDir : RNFS.readDirAssets
+  const webImages: Record<string, string> = {}
+  const [styles, content] = await Promise.all(['src/main.css', 'src/main.html'].map(path => readWebFile(webRoot + path, 'utf8')))
+
+  for (const file of (await readWebDir(webRoot + 'images')).filter(file => file.isFile())) {
+    const extension = file.name.split('.').pop()!.toLowerCase()
+    const type = ({ jpg: 'jpeg', svg: 'svg+xml' } as Record<string, string>)[extension] ?? extension
+    webImages['images/' + file.name] = `data:image/${type};base64,${await readWebFile(file.path, 'base64')}`
+  }
+
+  const html = content.replace(/src="([^"]+)"/g, (match, path) => webImages[path] ? `src="${webImages[path]}"` : match)
+  return `<meta name="viewport" content="initial-scale=1, user-scalable=no, viewport-fit=cover">
+<style>${styles}</style>
+<div id="content" style="height: 100%">${html}</div>
+<script>
+  window.webImages = ${JSON.stringify(webImages)};
+  requestAnimationFrame(() => requestAnimationFrame(() => {
+    window.ReactNativeWebView.postMessage(JSON.stringify({ id: "ready" }))
+  }))
+</script>`
 }
 
 (globalThis as any).document = document;
-registerRootComponent(() =>
-  <WebView
+registerRootComponent(() => {
+  const [html, setHtml] = React.useState('')
+  React.useEffect(() => { loadWebUI().then(setHtml).catch(console.error) }, [])
+  return html ? <WebView
     ref={ref => { webViewRef = ref }}
     onMessage={onMessage}
-    source={require("./index.html")}
+    originWhitelist={['*']}
+    source={{ html }}
     scrollEnabled={false}
     overScrollMode={'content'}
-  />
-)
+  /> : null
+})
