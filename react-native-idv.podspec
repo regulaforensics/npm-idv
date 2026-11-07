@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'react-native-idv'
-  s.version      = '4.0.300-nightly'
+  s.version      = '4.0.301-nightly'
   s.summary      = 'Regula React Native plugin.'
   s.license      = 'commercial'
   s.authors      = { 'RegulaForensics' => 'support@regulaforensics.com' }
@@ -9,6 +9,6 @@ Pod::Spec.new do |s|
   s.ios.deployment_target = '15.0'
   s.source_files = [ 'ios/*.swift', 'ios/RN*.m' ]
   s.exclude_files = [ 'ios/CDVIDV.swift' ]
-  s.dependency 'IDVSDKNightly', '4.0.2176'
+  s.dependency 'IDVSDKNightly', '4.0.2178'
   s.dependency 'React'
 end
