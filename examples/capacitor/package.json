@@ -6,9 +6,9 @@
     "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "4.0.299-rc",
-    "@regulaforensics/idv-module-document-reader": "4.0.456-rc",
-    "@regulaforensics/idv-module-face": "4.0.457-rc",
+    "@regulaforensics/idv": "4.0.303-rc",
+    "@regulaforensics/idv-module-document-reader": "4.0.464-rc",
+    "@regulaforensics/idv-module-face": "4.0.465-rc",
     "@regulaforensics/document-reader-core-fullauthrfid": "9.10.3608-rc",
     "@regulaforensics/face-core-basic": "8.5.927-rc",
     "@capacitor/cli": "^8.5.2",
