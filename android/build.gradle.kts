@@ -35,7 +35,7 @@ dependencies {
     //noinspection GradleDynamicVersion
     implementation("com.facebook.react:react-native:+")
     //noinspection GradleDependency
-    implementation("com.regula.idv:api:4.0.551") {
+    implementation("com.regula.idv:api:4.0.556") {
         isTransitive = true
     }
 }
