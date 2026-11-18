@@ -66,8 +66,8 @@ export class IDV {
 }
 
 export enum SessionRestoreMode {
-    ENABLED = 0,
-    DISABLED = 1,
+    ENABLED,
+    DISABLED,
 }
 
 export interface IDVListenerOptions {
@@ -81,8 +81,8 @@ export interface IDVListenerOptions {
 export type IdvLogEventCompletion = (level: IdvLogLevel, message: string) => void;
 
 export enum IdvLogLevel {
-    DEBUG = 0,
-    INFO = 1,
-    WARNING = 2,
-    ERROR = 3,
+    DEBUG,
+    INFO,
+    WARNING,
+    ERROR,
 }
