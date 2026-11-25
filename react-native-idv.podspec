@@ -1,6 +1,6 @@
 Pod::Spec.new do |s|
   s.name         = 'react-native-idv'
-  s.version      = '4.0.326-beta'
+  s.version      = '4.0.327-beta'
   s.summary      = 'Regula React Native plugin.'
   s.license      = 'commercial'
   s.authors      = { 'RegulaForensics' => 'support@regulaforensics.com' }
