@@ -7,10 +7,10 @@
     "postinstall": "patch-package"
   },
   "dependencies": {
-    "@regulaforensics/idv": "3.10.263-beta",
-    "@regulaforensics/idv-module-document-reader": "3.10.377-rc",
-    "@regulaforensics/idv-module-face": "3.10.378-rc",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.9.3305",
+    "@regulaforensics/idv": "4.0.326-beta",
+    "@regulaforensics/idv-module-document-reader": "3.10.432",
+    "@regulaforensics/idv-module-face": "3.10.433",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.10.3627",
     "@regulaforensics/face-core-basic": "8.4.884",
     "@angular-devkit/build-angular": "^22.1.8",
     "@angular/cli": "^22.1.8",
@@ -20,11 +20,14 @@
     "@angular/forms": "^22.1.7",
     "@angular/platform-browser-dynamic": "^22.1.7",
     "@angular/router": "^22.1.7",
+    "@ionic/cli": "^7.2.1",
     "@ionic/angular": "^9.0.4",
     "@ionic/cordova-builders": "^13.0.0",
+    "cordova": "^13.0.0",
     "cordova-android": "^15.1.0",
     "cordova-ios": "^8.1.1",
     "cordova-plugin-ionic-webview": "^5.0.1",
+    "native-run": "^2.0.3",
     "patch-package": "^8.0.1",
     "@angular/compiler": "^22.1.7",
     "@angular/platform-browser": "^22.1.7",
@@ -35,7 +38,24 @@
     "serialize-javascript": "^7.1.2",
     "uuid": "^11.1.1",
     "source-map-js": "^1.2.2",
-    "shell-quote": "^1.11.0"
+    "shell-quote": "^1.11.0",
+    "glob@^13.0.0": "^14.0.3",
+    "minimatch@^10.0.0": "^11.0.4",
+    "@ionic/cli": {
+      "tar": "^7.5.22"
+    },
+    "get-uri": {
+      "basic-ftp": "^6.2.5"
+    },
+    "tmp@<0.2.6": "^0.2.7",
+    "@regulaforensics/idv": {
+      "@expo/config-plugins": {
+        "glob": "^14.0.3"
+      }
+    },
+    "@ionic/cli-framework": {
+      "rimraf": "^6.1.4"
+    }
   },
   "cordova": {
     "plugins": {
