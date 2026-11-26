@@ -4,32 +4,40 @@ import React
 public class RNIDV: RCTEventEmitter {
     override public func startObserving() { hasListeners = true }
     override public func stopObserving() { hasListeners = false }
-    override public func supportedEvents()->[String] {
+    override public func supportedEvents() -> [String] {
         return [didStartSessionEvent,
                 didEndSessionEvent,
                 didStartRestoreSessionEvent,
                 didContinueRemoteSessionEvent,
-                didReceiveLogEventEvent];
+                didReceiveLogEventEvent]
     }
-    
+
     @objc
-    func exec(_ method: String, newArgs: [Any], resolve: @escaping RCTPromiseResolveBlock, reject: @escaping RCTPromiseRejectBlock) {
-        this = self
+    func exec(
+        _ method: String,
+        newArgs: [Any],
+        resolve: @escaping RCTPromiseResolveBlock,
+        reject: @escaping RCTPromiseRejectBlock
+    ) {
+        plugin = self
         args = newArgs
-        methodCall(method, { data in
-            if firedCallbacks.contains(where: { ($0 as AnyObject) === (resolve as AnyObject) }) { return }
-            firedCallbacks.append(resolve)
-            resolve(data.toSendable())
-        })
+        var didResolve = false
+        let lock = NSLock()
+        methodCall(method) { data in
+            lock.lock()
+            let alreadyResolved = didResolve
+            didResolve = true
+            lock.unlock()
+            if !alreadyResolved { resolve(data.toSendable()) }
+        }
     }
 }
 
-private var firedCallbacks: [RCTResponseSenderBlock] = []
-private var hasListeners: Bool = false
-private var this: RNIDV?
+private var hasListeners = false
+private weak var plugin: RNIDV?
 
 func sendEvent(_ event: String, _ data: Any? = nil) {
-    guard let plugin = this, hasListeners else { return }
+    guard let plugin, hasListeners else { return }
     DispatchQueue.main.async { plugin.sendEvent(withName: event, body: data.toSendable()) }
 }
 
@@ -39,6 +47,6 @@ func withPresenter(_ action: @escaping (UIViewController) -> Void) {
             action(presenter)
             return
         }
-        print("REGULA: Cannot present Face SDK UI: no presenter available.")
+        print("REGULA: Cannot present IDV UI: no presenter available.")
     }
 }
