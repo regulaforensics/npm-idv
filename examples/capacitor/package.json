@@ -6,10 +6,10 @@
     "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "4.0.322-rc",
-    "@regulaforensics/idv-module-document-reader": "4.0.507-rc",
-    "@regulaforensics/idv-module-face": "4.0.508-rc",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.11.3725-rc",
+    "@regulaforensics/idv": "4.0.329-rc",
+    "@regulaforensics/idv-module-document-reader": "4.0.517-rc",
+    "@regulaforensics/idv-module-face": "4.0.518-rc",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.11.3771-rc",
     "@regulaforensics/face-core-basic": "8.5.940-rc",
     "@capacitor/cli": "^8.5.2",
     "@capacitor/core": "^8.5.2",
@@ -21,7 +21,12 @@
     "xcode": {
       "uuid": "^11.1.1"
     },
-    "source-map-js": "^1.2.2"
+    "source-map-js": "^1.2.2",
+    "@regulaforensics/idv": {
+      "@expo/config-plugins": {
+        "glob": "^14.0.3"
+      }
+    }
   },
   "type": "module"
 }

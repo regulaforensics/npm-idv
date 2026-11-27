@@ -7,15 +7,15 @@
     "android": "scripts/android.sh"
   },
   "dependencies": {
-    "@regulaforensics/idv": "4.0.322-rc",
-    "@regulaforensics/idv-module-document-reader": "4.0.507-rc",
-    "@regulaforensics/idv-module-face": "4.0.508-rc",
-    "@regulaforensics/document-reader-core-fullauthrfid": "9.11.3725-rc",
+    "@regulaforensics/idv": "4.0.329-rc",
+    "@regulaforensics/idv-module-document-reader": "4.0.517-rc",
+    "@regulaforensics/idv-module-face": "4.0.518-rc",
+    "@regulaforensics/document-reader-core-fullauthrfid": "9.11.3771-rc",
     "@regulaforensics/face-core-basic": "8.5.940-rc",
     "expo": "~58.0.10",
     "expo-build-properties": "~58.0.10",
     "expo-custom-assets": "^1.5.0",
-    "react-native": "0.88.0",
+    "react-native": "0.88.1",
     "react": "19.3.1",
     "@types/react": "19.3.0",
     "react-native-webview": "^14.0.1",
@@ -26,6 +26,13 @@
   "overrides": {
     "xcode": {
       "uuid": "^11.1.1"
+    },
+    "glob@^13.0.0": "^14.0.3",
+    "minimatch@^10.0.0": "^11.0.4",
+    "@regulaforensics/idv": {
+      "@expo/config-plugins": {
+        "glob": "^14.0.3"
+      }
     }
   }
 }

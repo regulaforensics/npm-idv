@@ -14,7 +14,7 @@ repositories {
 
 dependencies {
     //noinspection GradleDependency
-    add("implementation", "com.regula.idv:api:4.0.584") {
+    add("implementation", "com.regula.idv:api:4.0.595") {
         isTransitive = true
     }
 }
